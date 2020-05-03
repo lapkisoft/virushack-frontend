@@ -47,6 +47,10 @@ class Client {
     getTodoList(query = {}) {
         return this.fetch('/todo-list', query);
     }
+
+    getTodoSettings(query = {}) {
+        return this.fetch('/todo-settings', query);
+    }
 }
 
 export default Client;

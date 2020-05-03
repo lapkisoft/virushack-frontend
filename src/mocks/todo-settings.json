@@ -1,0 +1,28 @@
+{
+    "data": [
+        {
+            "type": "temperature",
+            "name": "Замерить давление и пульс",
+            "regularity": "2-times-at-1-day",
+            "time": "08:00, 16:00"
+        },
+        {
+            "type": "pressure",
+            "name": "Замерить температуру",
+            "regularity": "1-time-at-1-day",
+            "time": "12:00"
+        },
+        {
+            "type": "text-1",
+            "name": "Дыхательная гимнастика",
+            "regularity": "1-time-at-1-day",
+            "time": "12:00"
+        },
+        {
+            "type": "text-2",
+            "name": "Общетонизирующие упражнения",
+            "regularity": "1-time-at-1-day",
+            "time": "18:00"
+        }
+    ]
+}

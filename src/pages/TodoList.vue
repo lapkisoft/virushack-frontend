@@ -1,5 +1,7 @@
 <template>
     <div class="page page-todo-list">
+        <h1>Чек-лист на день</h1>
+
         <div class="date-selector">
             <a href="#" class="prev-date" :class="prevDateClassList" @click.prevent="prevDate"></a>
 
@@ -8,21 +10,23 @@
             <a href="#" class="next-date" :class="nextDateClassList" @click.prevent="nextDate"></a>
         </div>
 
-        <h1>Чек-лист на день</h1>
-
         <ul class="todo-list">
-            <li v-for="(item, i) in todo" :key="i">
+            <li v-for="(row, i) in rows" :key="i">
                 <input :id="`todo-item-${i}-input`"
-                       :checked="item.checked"
+                       :checked="row.checked"
                        type="checkbox">
 
                 <label :for="`todo-item-${i}-input`">
                     <div class="checkbox"></div>
-                    <div class="name">{{ item.name }}</div>
-                    <div class="time">{{ item.time || '---' }}</div>
+                    <div class="name">{{ row.name }}</div>
+                    <div class="time">{{ row.time || '---' }}</div>
                 </label>
             </li>
         </ul>
+
+        <div class="controls">
+            <router-link to="/todo-settings" class="btn btn-block btn-lg btn-primary">Настроить</router-link>
+        </div>
     </div>
 </template>
 
@@ -30,7 +34,7 @@
     import './assets/scss/_TodoList.scss';
 
     export default {
-        name: 'page-todo',
+        name: 'page-todo-list',
 
         created() {
             this.load();
@@ -52,7 +56,7 @@
                 currentDate: currentDate,
                 currentDateLabel: this.calcDateLabel(date),
                 date: date,
-                todo: []
+                rows: []
             };
         },
 
@@ -75,7 +79,7 @@
         methods: {
             load() {
                 this.$api.getTodoList().then(({data}) => {
-                    this.todo = data;
+                    this.rows = data;
                 });
             },
 
@@ -120,7 +124,12 @@
             },
 
             updateRoute() {
-                this.$router.replace({name: 'page-todo', params: {date: this.calcDateIsoLabel(this.date)}});
+                this.$router.replace({
+                    name: 'page-todo-list',
+                    params: {
+                        date: this.calcDateIsoLabel(this.date)
+                    }
+                });
             }
         }
     };
