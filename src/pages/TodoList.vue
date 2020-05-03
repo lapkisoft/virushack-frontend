@@ -2,7 +2,7 @@
     <div class="page page-todo-list">
         <h1>Чек-лист на день</h1>
 
-        <div class="date-selector">
+        <div class="page-date-selector">
             <a href="#" class="prev-date" :class="prevDateClassList" @click.prevent="prevDate"></a>
 
             <span>{{ dateLabel }}</span>

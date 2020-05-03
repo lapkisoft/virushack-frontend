@@ -1,7 +1,7 @@
 import Vue from './vue.js';
 import VueRouter from 'vue-router';
 
-import Indications from './pages/Indications.vue';
+import IndicationList from './pages/IndicationList.vue';
 import Quiz from './pages/Quiz.vue';
 import Recommendations from './pages/Recommendations.vue';
 import Settings from './pages/Settings.vue';
@@ -15,9 +15,9 @@ const router = new VueRouter({
     mode: 'history',
     routes: [
         {
-            name: Indications.name,
-            path: '/indications',
-            component: Indications
+            name: IndicationList.name,
+            path: '/indication-list/:date?',
+            component: IndicationList
         },
         {
             name: Quiz.name,

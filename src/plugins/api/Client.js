@@ -44,6 +44,10 @@ class Client {
         }));
     }
 
+    getIndicationList(query = {}) {
+        return this.fetch('/indication-list', query);
+    }
+
     getTodoList(query = {}) {
         return this.fetch('/todo-list', query);
     }

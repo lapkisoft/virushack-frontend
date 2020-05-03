@@ -24,7 +24,7 @@
                     </router-link>
                 </li>
                 <li>
-                    <router-link @click.native="toggleMenu(false)" to="/indications">
+                    <router-link @click.native="toggleMenu(false)" to="/indication-list">
                         Измерения
                     </router-link>
                 </li>

@@ -4,13 +4,15 @@
 }
 
 header {
-    display:  block;
-    height:   60px;
-    width:    100%;
-    position: fixed;
-    top:      0;
-    left:     0;
-    z-index:  1;
+    display:    block;
+    height:     60px;
+    width:      100%;
+    position:   fixed;
+    top:        0;
+    left:       0;
+    z-index:    1;
+    background: white;
+    box-shadow: 0 0 15px #cccccc;
 
     nav {
         display:         flex;
@@ -20,7 +22,6 @@ header {
         align-items:     center;
         height:          100%;
         padding:         0 10px;
-        background:      white;
 
         .menu-button-wrapper button,
         .profile-button-wrapper a {
@@ -118,7 +119,9 @@ header {
 }
 
 main {
-    padding: 15px;
+    --layout-horizontal-padding: 15px;
+
+    padding: 15px var(--layout-horizontal-padding);
 
     .page {
         h1 {
