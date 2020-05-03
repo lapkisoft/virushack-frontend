@@ -1,0 +1,9 @@
+@import '~sweetalert2/dist/sweetalert2.min.css';
+
+.swal2-popup {
+    &.swal2-toast {
+        .swal2-header {
+            margin-right: 10px;
+        }
+    }
+}

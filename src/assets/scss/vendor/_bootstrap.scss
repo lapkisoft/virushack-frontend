@@ -1,0 +1,19 @@
+//@import '~bootstrap/dist/css/bootstrap.min.css';
+
+@import '~bootstrap/scss/_functions.scss';
+@import '~bootstrap/scss/_variables.scss';
+
+$grid-gutter-width: 1rem;
+
+@import '~bootstrap/scss/_mixins.scss';
+@import '~bootstrap/scss/_root.scss';
+@import '~bootstrap/scss/_reboot.scss';
+@import '~bootstrap/scss/_type.scss';
+@import '~bootstrap/scss/_grid.scss';
+@import '~bootstrap/scss/_tables.scss';
+@import '~bootstrap/scss/_forms.scss';
+@import '~bootstrap/scss/_buttons.scss';
+@import '~bootstrap/scss/_button-group.scss';
+@import '~bootstrap/scss/_input-group.scss';
+@import '~bootstrap/scss/_dropdown.scss';
+@import '~bootstrap/scss/_pagination.scss';
