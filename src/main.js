@@ -1,5 +1,7 @@
 import Vue from './vue.js';
 
+import './plugins.js';
+
 import router from './router.js';
 import store from './store.js';
 

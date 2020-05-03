@@ -1,0 +1,72 @@
+.page-todo-list {
+    .date-selector {
+        display:         flex;
+        flex-direction:  row;
+        flex-wrap:       nowrap;
+        justify-content: center;
+        align-items:     center;
+        margin:          15px 0 25px;
+
+        .md-button {
+            outline: none;
+
+            &.disabled {
+                pointer-events: none;
+                opacity:        0.25;
+            }
+        }
+
+        span {
+            min-width:   120px;
+            text-align:  center;
+            font-size:   18px;
+            line-height: 24px;
+            color:       #777777;
+            font-weight: 600;
+        }
+    }
+
+    ul.todo-list {
+        list-style: none;
+        padding:    0;
+        margin:     0;
+
+        > li {
+            display:         flex;
+            flex-direction:  row;
+            flex-wrap:       nowrap;
+            justify-content: space-between;
+            align-items:     center;
+            margin:          0;
+
+            .md-checkbox {
+                margin: 12px 6px 6px 0;
+
+                .md-checkbox-label {
+                    transition: color 0.15s;
+                }
+            }
+
+            .time {
+                transition:  color 0.15s;
+                flex-shrink: 0;
+                font-size:   15px;
+                line-height: 24px;
+                font-weight: 700;
+                color:       #555555;
+            }
+
+            .md-checkbox.md-checked {
+                .md-checkbox-label {
+                    text-decoration: line-through;
+                    color:           #888888;
+                }
+
+                + .time {
+                    text-decoration: line-through;
+                    color:           #888888;
+                }
+            }
+        }
+    }
+}

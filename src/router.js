@@ -1,7 +1,7 @@
 import Vue from './vue.js';
 import VueRouter from 'vue-router';
 
-import Todo from './pages/Todo.vue';
+import TodoList from './pages/TodoList.vue';
 import Indications from './pages/Indications.vue';
 import Quiz from './pages/Quiz.vue';
 import Recommendations from './pages/Recommendations.vue';
@@ -13,9 +13,9 @@ const router = new VueRouter({
     mode: 'history',
     routes: [
         {
-            name: Todo.name,
-            path: '/todo',
-            component: Todo
+            name: TodoList.name,
+            path: '/todo-list/:date?',
+            component: TodoList
         },
         {
             name: Indications.name,

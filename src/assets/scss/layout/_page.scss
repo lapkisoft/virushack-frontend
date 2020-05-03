@@ -1,128 +1,39 @@
 #app {
-    display: block;
-    padding: 60px 0;
-}
+    --header-height: 55px;
 
-header {
-    display:    block;
-    height:     60px;
-    width:      100%;
-    position:   fixed;
-    top:        0;
-    left:       0;
-    z-index:    1;
-    background: white;
+    display:         block;
+    padding:         var(--header-height) 0 0;
 
-    nav {
-        display:         flex;
-        flex-direction:  row;
-        flex-wrap:       nowrap;
-        justify-content: space-between;
-        align-items:     center;
-        height:          100%;
-        padding:         0 10px;
+    header {
+        display:    block;
+        height:     var(--header-height);
+        width:      100%;
+        position:   fixed;
+        top:        0;
+        left:       0;
+        z-index:    1;
+        background: white;
 
-        .menu-button-wrapper button,
-        .profile-button-wrapper a {
-            display:         flex;
-            flex-direction:  column;
-            flex-wrap:       nowrap;
-            justify-content: center;
-            align-items:     center;
-            width:           40px;
-            height:          40px;
-            border:          none;
-            outline:         none;
-            background:      none;
-            font-size:       28px;
-            color:           #555555;
-            text-decoration: none;
-        }
+        .md-toolbar {
+            height: 100%;
 
-        .menu-button-wrapper button {
-            .bar {
-                transition: opacity 0.15s, transform 0.15s;
-                display:    block;
-                width:      24px;
-                height:     3px;
-                margin:     2px 0;
-                background: #000000;
-            }
-
-            #app.menu-opened & {
-                .bar {
-                    &:nth-child(1) {
-                        transform: rotate(-45deg) translate(-5px, 5px);
-                    }
-
-                    &:nth-child(2) {
-                        opacity: 0;
-                    }
-
-                    &:nth-child(3) {
-                        transform: rotate(45deg) translate(-5px, -5px);
-                    }
+            button, a, {
+                &, &:hover, &:focus, &:active {
+                    text-decoration: none;
+                    outline:         none;
                 }
-            }
-        }
-
-        .profile-button-wrapper a {
-            &:active,
-            &:focus,
-            &.router-link-active {
-                color: #000000;
             }
         }
     }
 
-    menu {
-        transition:     opacity 0.15s;
-        display:        block;
-        position:       fixed;
-        top:            60px;
-        left:           0;
-        width:          100%;
-        height:         calc(100% - 60px);
-        background:     white;
-        margin:         0;
-        padding:        15px;
-        list-style:     none;
-        opacity:        0;
-        pointer-events: none;
+    main {
+        padding: 15px;
 
-        > li {
-            margin: 0 0 15px;
-
-            a {
-                display:         inline-block;
-                font-size:       20px;
-                line-height:     1.3;
-                font-weight:     600;
-                text-decoration: none;
-                color:           #555555;
-
-                &:active,
-                &:focus,
-                &.router-link-active {
-                    color:           #000000;
-                    text-decoration: underline;
-                }
+        .page {
+            h1 {
+                margin:    0 0 20px;
+                font-size: 24px;
             }
-        }
-
-        #app.menu-opened & {
-            opacity:        1;
-            pointer-events: auto;
-        }
-    }
-}
-
-main {
-    padding: 10px;
-
-    .page {
-        h1 {
-            font-size: 28px;
         }
     }
 }

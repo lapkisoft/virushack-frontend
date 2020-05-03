@@ -1,50 +1,55 @@
 <template>
-    <div id="app" :class="classList">
+    <div id="app">
         <header>
-            <nav>
-                <div class="menu-button-wrapper">
-                    <button @click.prevent="toggleMenu">
-                        <span class="bar"></span>
-                        <span class="bar"></span>
-                        <span class="bar"></span>
-                    </button>
-                </div>
+            <md-toolbar class="md-primary">
+                <div class="md-toolbar-row">
+                    <div class="md-toolbar-section-start">
+                        <md-button class="md-icon-button" @click.prevent="toggleMenu">
+                            <md-icon>menu</md-icon>
+                        </md-button>
+                    </div>
 
-                <div class="profile-button-wrapper">
-                    <router-link @click.native="toggleMenu(false)" to="/settings">
-                        <i class="fa fa-user-circle"></i>
-                    </router-link>
+                    <div class="md-toolbar-section-end">
+                        <md-button class="md-icon-button" to="/settings" @click.native="toggleMenu(false)">
+                            <md-icon>settings</md-icon>
+                        </md-button>
+                    </div>
                 </div>
-            </nav>
-
-            <menu>
-                <li>
-                    <router-link @click.native="toggleMenu(false)" to="/todo">
-                        Чек-лист на сегодня
-                    </router-link>
-                </li>
-                <li>
-                    <router-link @click.native="toggleMenu(false)" to="/indications">
-                        Измерения
-                    </router-link>
-                </li>
-                <li>
-                    <router-link @click.native="toggleMenu(false)" to="/quiz">
-                        Опрос состояния больного
-                    </router-link>
-                </li>
-                <li>
-                    <router-link @click.native="toggleMenu(false)" to="/recommendations">
-                        Рекомендации
-                    </router-link>
-                </li>
-                <li>
-                    <router-link @click.native="toggleMenu(false)" to="/settings">
-                        Настройка
-                    </router-link>
-                </li>
-            </menu>
+            </md-toolbar>
         </header>
+
+        <md-drawer :md-active.sync="showMenu" md-swipeable>
+            <md-toolbar class="md-transparent" md-elevation="0">
+                <span class="md-title">Забота о близких</span>
+            </md-toolbar>
+
+            <md-list>
+                <md-list-item @click="toggleMenu(false)" to="/todo-list">
+                    <md-icon>today</md-icon>
+                    <span class="md-list-item-text">Чек-лист на сегодня</span>
+                </md-list-item>
+
+                <md-list-item @click="toggleMenu(false)" to="/indications">
+                    <md-icon>opacity</md-icon>
+                    <span class="md-list-item-text">Измерения</span>
+                </md-list-item>
+
+                <md-list-item @click="toggleMenu(false)" to="/quiz">
+                    <md-icon>library_add_check</md-icon>
+                    <span class="md-list-item-text">Опрос состояния больного</span>
+                </md-list-item>
+
+                <md-list-item @click="toggleMenu(false)" to="/recommendations">
+                    <md-icon>bookmarks</md-icon>
+                    <span class="md-list-item-text">Рекомендации</span>
+                </md-list-item>
+
+                <md-list-item @click="toggleMenu(false)" to="/settings">
+                    <md-icon>settings</md-icon>
+                    <span class="md-list-item-text">Настройка</span>
+                </md-list-item>
+            </md-list>
+        </md-drawer>
 
         <main>
             <router-view/>
@@ -58,25 +63,19 @@
     export default {
         data() {
             return {
-                menu_opened: false
+                showMenu: false
             };
         },
 
-        computed: {
-            classList() {
-                return {
-                    'menu-opened': this.menu_opened
-                };
-            }
-        },
+        computed: {},
 
         methods: {
             toggleMenu(state = null) {
                 if (typeof state !== 'boolean') {
-                    state = !this.menu_opened
+                    state = !this.showMenu;
                 }
 
-                this.menu_opened = state;
+                this.showMenu = state;
             }
         }
     };
