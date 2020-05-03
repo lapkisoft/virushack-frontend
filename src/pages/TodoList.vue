@@ -1,26 +1,26 @@
 <template>
     <div class="page page-todo-list">
         <div class="date-selector">
-            <md-button class="md-icon-button" :class="prevDateClassList" @click.prevent="prevDate">
-                <md-icon>chevron_left</md-icon>
-            </md-button>
+            <a href="#" class="prev-date" :class="prevDateClassList" @click.prevent="prevDate"></a>
 
             <span>{{ dateLabel }}</span>
 
-            <md-button class="md-icon-button" :class="nextDateClassList" @click.prevent="nextDate">
-                <md-icon>chevron_right</md-icon>
-            </md-button>
+            <a href="#" class="next-date" :class="nextDateClassList" @click.prevent="nextDate"></a>
         </div>
 
         <h1>Чек-лист на день</h1>
 
-
-
         <ul class="todo-list">
             <li v-for="(item, i) in todo" :key="i">
-                <md-checkbox v-model="item.checked" class="md-primary">{{ item.name }}</md-checkbox>
+                <input :id="`todo-item-${i}-input`"
+                       :checked="item.checked"
+                       type="checkbox">
 
-                <div class="time">{{ item.time || '---' }}</div>
+                <label :for="`todo-item-${i}-input`">
+                    <div class="checkbox"></div>
+                    <div class="name">{{ item.name }}</div>
+                    <div class="time">{{ item.time || '---' }}</div>
+                </label>
             </li>
         </ul>
     </div>

@@ -16,6 +16,43 @@
             }
         }
 
+        a {
+            transition:      opacity 0.15s;
+            display:         flex;
+            flex-direction:  row;
+            flex-wrap:       nowrap;
+            justify-content: center;
+            align-items:     center;
+            margin:          0;
+            padding:         10px;
+
+            &:after {
+                content:             '';
+                display:             block;
+                width:               12px;
+                height:              12px;
+                background-repeat:   no-repeat;
+                background-position: center center;
+            }
+
+            &.prev-date {
+                &:after {
+                    background-image: url(/img/icons/arrow-left.svg);
+                }
+            }
+
+            &.next-date {
+                &:after {
+                    background-image: url(/img/icons/arrow-right.svg);
+                }
+            }
+
+            &.disabled {
+                pointer-events: none;
+                opacity:        0.35;
+            }
+        }
+
         span {
             min-width:   120px;
             text-align:  center;
@@ -32,39 +69,67 @@
         margin:     0;
 
         > li {
-            display:         flex;
-            flex-direction:  row;
-            flex-wrap:       nowrap;
-            justify-content: space-between;
-            align-items:     center;
-            margin:          0;
+            margin: 0 0 5px;
 
-            .md-checkbox {
-                margin: 12px 6px 6px 0;
+            input[type="checkbox"] {
+                display: none;
 
-                .md-checkbox-label {
-                    transition: color 0.15s;
+                + label {
+                    display:         flex;
+                    flex-direction:  row;
+                    flex-wrap:       nowrap;
+                    justify-content: flex-start;
+                    align-items:     center;
+                    margin:          0;
+                    padding:         5px 0;
+
+                    .checkbox {
+                        transition:       background-color 0.15s, border-color 0.15s;
+                        flex-shrink:      0;
+                        width:            16px;
+                        height:           16px;
+                        margin:           0 10px 0 0;
+                        border:           2px solid #aaaaaa;
+                        border-radius:    2px;
+                        background-color: transparent;
+                    }
+
+                    .name {
+                        flex-grow:   1;
+                        flex-basis:  0;
+                        font-size:   15px;
+                        line-height: 24px;
+                        font-weight: 400;
+                        color:       #555555;
+                    }
+
+                    .time {
+                        transition:  color 0.15s;
+                        flex-shrink: 0;
+                        font-size:   15px;
+                        line-height: 24px;
+                        font-weight: 700;
+                        color:       #555555;
+                    }
                 }
-            }
 
-            .time {
-                transition:  color 0.15s;
-                flex-shrink: 0;
-                font-size:   15px;
-                line-height: 24px;
-                font-weight: 700;
-                color:       #555555;
-            }
+                &:checked {
+                    + label {
+                        .checkbox {
+                            background-color: var(--primary);
+                            border-color:     var(--primary);
+                        }
 
-            .md-checkbox.md-checked {
-                .md-checkbox-label {
-                    text-decoration: line-through;
-                    color:           #888888;
-                }
+                        .name {
+                            text-decoration: line-through;
+                            color:           #888888;
+                        }
 
-                + .time {
-                    text-decoration: line-through;
-                    color:           #888888;
+                        .time {
+                            text-decoration: line-through;
+                            color:           #888888;
+                        }
+                    }
                 }
             }
         }
