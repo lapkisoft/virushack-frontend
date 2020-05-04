@@ -58,6 +58,8 @@
     import '@/assets/scss/_layout.scss';
 
     const prevRouteMap = {
+        'page-indication-add': 'page-indication-list',
+        'page-indication-form': 'page-indication-add',
         'page-todo-settings': 'page-todo-list',
         'page-todo-form': 'page-todo-settings'
     };

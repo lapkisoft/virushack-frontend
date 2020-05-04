@@ -1,0 +1,47 @@
+[
+    {
+        "type": "pressure",
+        "name": "Давление",
+        "icon": "/img/icons/indication-pressure.svg"
+    },
+    {
+        "type": "temperature",
+        "name": "Температура",
+        "icon": "/img/icons/indication-temperature.svg"
+    },
+    {
+        "type": "liquid",
+        "name": "Жидкость",
+        "icon": "/img/icons/indication-liquid.svg"
+    },
+    {
+        "type": "toilet",
+        "name": "Туалет",
+        "icon": "/img/icons/indication-toilet.svg"
+    },
+    {
+        "type": "sleep",
+        "name": "Сон",
+        "icon": "/img/icons/indication-sleep.svg"
+    },
+    {
+        "type": "pain",
+        "name": "Боль",
+        "icon": "/img/icons/indication-pain.svg"
+    },
+    {
+        "type": "skin",
+        "name": "Повреждения кожи",
+        "icon": "/img/icons/indication-skin.svg"
+    },
+    {
+        "type": "walk",
+        "name": "Прогулка",
+        "icon": "/img/icons/indication-walk.svg"
+    },
+    {
+        "type": "dosug",
+        "name": "Досуг",
+        "icon": "/img/icons/indication-dosug.svg"
+    }
+]
