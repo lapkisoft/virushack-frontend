@@ -2,12 +2,18 @@
     box-sizing: border-box;
 }
 
+:root {
+    font-size: 14px;
+    color:     #334669;
+}
+
 html, body {
     margin:      0;
     padding:     0;
-    background:  #f0f0f0;
+    background:  #e4f0fa;
     font-family: 'Liberation Sans', Roboto, sans-serif;
     font-size:   14px;
+    color:       #334669;
 }
 
 .fade-enter-active, .fade-leave-active {

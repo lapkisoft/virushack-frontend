@@ -2,38 +2,53 @@
     display:         flex;
     flex-direction:  row;
     flex-wrap:       nowrap;
-    justify-content: center;
+    justify-content: space-between;
     align-items:     center;
-    margin:          25px 0;
+    margin:          25px calc(-1 * var(--layout-horizontal-padding));
+    padding:         0;
+    background:      #ffffff;
 
     a {
         transition:      opacity 0.15s;
+        min-width:       90px;
         display:         flex;
         flex-direction:  row;
         flex-wrap:       nowrap;
-        justify-content: center;
         align-items:     center;
         margin:          0;
-        padding:         10px;
-
-        &:after {
-            content:             '';
-            display:             block;
-            width:               12px;
-            height:              12px;
-            background-repeat:   no-repeat;
-            background-position: center center;
-        }
+        padding:         12px;
+        font-size:       14px;
+        line-height:     22px;
+        color:           #334669;
+        text-decoration: none;
 
         &.prev-date {
-            &:after {
-                background-image: url(/img/icons/arrow-left.svg);
+            justify-content: flex-start;
+
+            &:before {
+                content:             '';
+                display:             block;
+                width:               10px;
+                height:              10px;
+                margin:              0 6px 0 0;
+                background-repeat:   no-repeat;
+                background-position: center center;
+                background-image:    url(/img/icons/arrow-left.svg);
             }
         }
 
         &.next-date {
+            justify-content: flex-end;
+
             &:after {
-                background-image: url(/img/icons/arrow-right.svg);
+                content:             '';
+                display:             block;
+                width:               10px;
+                height:              10px;
+                margin:              0 0 0 6px;
+                background-repeat:   no-repeat;
+                background-position: center center;
+                background-image:    url(/img/icons/arrow-right.svg);
             }
         }
 
@@ -47,8 +62,8 @@
         min-width:   120px;
         text-align:  center;
         font-size:   18px;
-        line-height: 24px;
-        color:       #777777;
-        font-weight: 600;
+        line-height: 22px;
+        color:       #334669;
+        font-weight: 500;
     }
 }

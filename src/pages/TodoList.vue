@@ -3,11 +3,17 @@
         <h1>Чек-лист на день</h1>
 
         <div class="page-date-selector">
-            <a href="#" class="prev-date" :class="prevDateClassList" @click.prevent="prevDate"></a>
+            <a href="#"
+               class="prev-date"
+               :class="prevDateClassList"
+               @click.prevent="toPrevDate">{{ prevDateLabel }}</a>
 
             <span>{{ dateLabel }}</span>
 
-            <a href="#" class="next-date" :class="nextDateClassList" @click.prevent="nextDate"></a>
+            <a href="#"
+               class="next-date"
+               :class="nextDateClassList"
+               @click.prevent="toNextDate">{{ nextDateLabel }}</a>
         </div>
 
         <ul class="todo-list">
@@ -54,7 +60,7 @@
 
             return {
                 currentDate: currentDate,
-                currentDateLabel: this.calcDateLabel(date),
+                currentDateIsoLabel: this.calcDateIsoLabel(date),
                 date: date,
                 rows: []
             };
@@ -65,13 +71,41 @@
                 return this.calcDateLabel(this.date);
             },
 
+            dateIsoLabel() {
+                return this.calcDateIsoLabel(this.date);
+            },
+
+            prevDate() {
+                let prevDate = new Date(this.date);
+
+                prevDate.setHours(this.date.getHours() - 24);
+
+                return prevDate;
+            },
+
+            prevDateLabel() {
+                return this.calcDateLabel(this.prevDate);
+            },
+
             prevDateClassList() {
                 return {};
             },
 
+            nextDate() {
+                let nextDate = new Date(this.date);
+
+                nextDate.setHours(this.date.getHours() + 24);
+
+                return nextDate;
+            },
+
+            nextDateLabel() {
+                return this.calcDateLabel(this.nextDate);
+            },
+
             nextDateClassList() {
                 return {
-                    disabled: this.calcDateLabel(this.currentDate) === this.dateLabel
+                    disabled: this.currentDateIsoLabel === this.dateIsoLabel
                 };
             }
         },
@@ -88,10 +122,9 @@
              * @returns {string}
              */
             calcDateLabel(date) {
-                return date.toLocaleString('ru', {
-                    year: 'numeric',
+                return date.toLocaleDateString('ru', {
                     month: 'short',
-                    day: '2-digit'
+                    day: 'numeric'
                 });
             },
 
@@ -103,22 +136,14 @@
                 return date.toISOString().split('T')[0];
             },
 
-            prevDate() {
-                let prevDate = new Date(this.date);
-
-                prevDate.setHours(this.date.getHours() - 24);
-
-                this.date = prevDate;
+            toPrevDate() {
+                this.date = this.prevDate;
 
                 this.updateRoute();
             },
 
-            nextDate() {
-                let nextDate = new Date(this.date);
-
-                nextDate.setHours(this.date.getHours() + 24);
-
-                this.date = nextDate;
+            toNextDate() {
+                this.date = this.nextDate;
 
                 this.updateRoute();
             },
