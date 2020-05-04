@@ -1,8 +1,8 @@
 .page-todo-list {
     ul.todo-list {
         list-style: none;
-        padding:    0;
-        margin:     0 0 50px;
+        padding: 0;
+        margin: 0 0 50px;
 
         > li {
             margin: 0 0 5px;
@@ -11,58 +11,58 @@
                 display: none;
 
                 + label {
-                    display:         flex;
-                    flex-direction:  row;
-                    flex-wrap:       nowrap;
+                    display: flex;
+                    flex-direction: row;
+                    flex-wrap: nowrap;
                     justify-content: flex-start;
-                    align-items:     center;
-                    margin:          0;
-                    padding:         5px 0;
+                    align-items: center;
+                    margin: 0;
+                    padding: 5px 0;
 
                     .checkbox {
-                        transition:    background-color 0.25s, border-color 0.25s;
-                        display:       block;
-                        position:      relative;
-                        flex-shrink:   0;
-                        width:         20px;
-                        height:        20px;
-                        margin:        0 15px 0 0;
-                        background:    #e3edf7;
-                        box-shadow:    inset 0px 2px 4px #c8d4e2, inset 4px 2px 6px #b1c5d5, inset 3px 6px 6px #c3d7e7, inset -6px -3px 5px rgba(255, 255, 255, 0.750601);
+                        transition: background-color 0.25s, border-color 0.25s;
+                        display: block;
+                        position: relative;
+                        flex-shrink: 0;
+                        width: 20px;
+                        height: 20px;
+                        margin: 0 15px 0 0;
+                        background: #e3edf7;
+                        box-shadow: inset 0px 2px 4px #c8d4e2, inset 4px 2px 6px #b1c5d5, inset 3px 6px 6px #c3d7e7, inset -6px -3px 5px rgba(255, 255, 255, 0.750601);
                         border-radius: 4px;
 
                         &:after {
-                            transition:          opacity 0.25s;
-                            content:             '';
-                            display:             block;
-                            position:            absolute;
-                            width:               18px;
-                            height:              13px;
-                            left:                4px;
-                            bottom:              5px;
-                            background-repeat:   no-repeat;
+                            transition: opacity 0.25s;
+                            content: '';
+                            display: block;
+                            position: absolute;
+                            width: 18px;
+                            height: 13px;
+                            left: 4px;
+                            bottom: 5px;
+                            background-repeat: no-repeat;
                             background-position: center center;
-                            background-image:    url(/img/icons/check.svg);
-                            opacity:             0;
+                            background-image: url(/img/icons/check.svg);
+                            opacity: 0;
                         }
                     }
 
                     .name {
-                        flex-grow:   1;
-                        flex-basis:  0;
-                        font-size:   15px;
+                        flex-grow: 1;
+                        flex-basis: 0;
+                        font-size: 15px;
                         line-height: 24px;
                         font-weight: 400;
-                        color:       #555555;
+                        color: #555555;
                     }
 
                     .time {
-                        transition:  color 0.25s;
+                        transition: color 0.25s;
                         flex-shrink: 0;
-                        font-size:   15px;
+                        font-size: 15px;
                         line-height: 24px;
                         font-weight: 700;
-                        color:       #555555;
+                        color: #555555;
                     }
                 }
 
@@ -76,12 +76,12 @@
 
                         .name {
                             text-decoration: line-through;
-                            color:           #888888;
+                            color: #888888;
                         }
 
                         .time {
                             text-decoration: line-through;
-                            color:           #888888;
+                            color: #888888;
                         }
                     }
                 }
