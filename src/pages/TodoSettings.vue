@@ -50,7 +50,7 @@
         </ul>
 
         <div class="controls">
-            <router-link to="/todo-form" class="btn btn-block btn-lg btn-primary">+ Добавить задачу</router-link>
+            <router-link to="/todo-form" class="button">+ Добавить задачу</router-link>
         </div>
     </div>
 </template>
@@ -59,7 +59,7 @@
     import './assets/scss/_TodoSettings.scss';
 
     export default {
-        name: 'todo-settings',
+        name: 'page-todo-settings',
 
         created() {
             this.load();

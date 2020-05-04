@@ -57,7 +57,7 @@
             </div>
 
             <div class="controls">
-                <button type="submit" class="btn btn-block btn-lg btn-primary">Сохранить</button>
+                <button type="submit" class="button">Сохранить</button>
             </div>
         </form>
     </div>

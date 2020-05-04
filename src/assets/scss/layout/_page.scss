@@ -4,17 +4,19 @@
 }
 
 header {
-    display:  block;
-    height:   60px;
-    width:    100%;
-    position: fixed;
-    top:      0;
-    left:     0;
-    z-index:  1;
+    transition: box-shadow 0.25s;
+    display:    block;
+    height:     60px;
+    width:      100%;
+    position:   fixed;
+    top:        0;
+    left:       0;
+    z-index:    1;
+    background: #e4f0fa;
 
     nav {
         display:         flex;
-        flex-direction:  row;
+        flex-direction:  row-reverse;
         flex-wrap:       nowrap;
         justify-content: space-between;
         align-items:     center;
@@ -147,6 +149,10 @@ header {
                 pointer-events: auto;
             }
         }
+    }
+
+    #app.page-scrolled & {
+        box-shadow: 0 0 10px #cccccc;
     }
 }
 

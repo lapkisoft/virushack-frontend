@@ -2,18 +2,18 @@
     <div id="app" :class="classList">
         <header>
             <nav>
-                <div class="back-button-wrapper">
-                    <router-link @click.native="toggleMenu(false)" to="/settings">
-                        <i class="fa fa-user-circle"></i>
-                    </router-link>
-                </div>
-
                 <div class="menu-button-wrapper">
                     <button @click.prevent="toggleMenu">
                         <span class="bar"></span>
                         <span class="bar"></span>
                         <span class="bar"></span>
                     </button>
+                </div>
+
+                <div class="back-button-wrapper" v-if="prevRouteName">
+                    <router-link :to="{name: prevRouteName}">
+                        <img src="/img/icons/arrow-left.svg" alt="">
+                    </router-link>
                 </div>
             </nav>
 
@@ -57,18 +57,46 @@
 <script>
     import '@/assets/scss/_layout.scss';
 
+    const prevRouteMap = {
+        'page-todo-settings': 'page-todo-list',
+        'page-todo-form': 'page-todo-settings'
+    };
+
     export default {
+        created() {
+            this.onRoute(this.$route);
+
+            this.$router.beforeEach((to, from, next) => {
+                this.onRoute(to);
+
+                next();
+            });
+        },
+
+        mounted() {
+            window.addEventListener('scroll', () => {
+                this.page_scrolled = window.scrollY > 0;
+            });
+        },
+
         data() {
             return {
-                menu_opened: false
+                page_scrolled: false,
+                menu_opened: false,
+                route_name: null
             };
         },
 
         computed: {
             classList() {
                 return {
+                    'page-scrolled': this.page_scrolled,
                     'menu-opened': this.menu_opened
                 };
+            },
+
+            prevRouteName() {
+                return this.route_name && prevRouteMap[this.route_name] || null;
             }
         },
 
@@ -79,6 +107,10 @@
                 }
 
                 this.menu_opened = state;
+            },
+
+            onRoute(route) {
+                this.route_name = route.name;
             }
         }
     };

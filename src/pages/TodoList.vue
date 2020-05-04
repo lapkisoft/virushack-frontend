@@ -19,7 +19,7 @@
         </ul>
 
         <div class="controls">
-            <router-link to="/todo-settings" class="btn btn-block btn-lg btn-primary">Настроить</router-link>
+            <router-link to="/todo-settings" class="button">Настроить</router-link>
         </div>
     </div>
 </template>
