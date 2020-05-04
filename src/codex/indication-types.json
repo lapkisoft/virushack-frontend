@@ -1,7 +1,7 @@
 [
     {
         "type": "pressure",
-        "name": "Давление",
+        "name": "Давление и пульс",
         "icon": "/img/icons/indication-pressure.svg"
     },
     {

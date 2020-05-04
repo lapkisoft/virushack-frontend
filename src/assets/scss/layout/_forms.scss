@@ -20,6 +20,21 @@ input.form-control {
         inset 3px 6px 6px #c3d7e7,
         inset -6px -3px 5px rgba(255, 255, 255, 0.750601);
     }
+
+    &::-webkit-input-placeholder {
+        color: #aaaaaa;
+        font-weight: 400;
+    }
+
+    &:-ms-input-placeholder {
+        color: #aaaaaa;
+        font-weight: 400;
+    }
+
+    &::placeholder {
+        color: #aaaaaa;
+        font-weight: 400;
+    }
 }
 
 select.form-control {

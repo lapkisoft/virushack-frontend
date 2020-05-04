@@ -2,7 +2,7 @@
     ul.indication-list {
         list-style: none;
         margin: 0 calc(-1 * var(--layout-horizontal-padding)) 25px;
-        padding: 15px var(--layout-horizontal-padding);
+        padding: 25px var(--layout-horizontal-padding);
         background: white;
 
         > li {
@@ -22,15 +22,15 @@
                     display: block;
                     width: 20px;
                     height: 20px;
-                    margin: 0 5px 0 0;
+                    margin: 0 8px 0 0;
                     object-fit: scale-down;
                     object-position: center center;
                 }
 
                 span {
                     display: block;
-                    font-size: 22px;
-                    font-weight: 400;
+                    font-size: 18px;
+                    font-weight: 500;
                     line-height: 1;
                     color: #555555;
                 }
