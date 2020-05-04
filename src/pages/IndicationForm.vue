@@ -100,6 +100,70 @@
 
             <template v-else-if="type === 'skin'">
                 <h3>Кожный покров</h3>
+
+                <div class="form-group">
+                    <input type="text"
+                           class="form-control"
+                           v-model="skin_color"
+                           placeholder="Цвет кожи"
+                           required>
+                </div>
+
+                <div class="form-group">
+                    <input type="text"
+                           class="form-control"
+                           v-model="skin_dryness"
+                           placeholder="Сухость"
+                           required>
+                </div>
+
+                <div class="form-group">
+                    <input type="text"
+                           class="form-control"
+                           v-model="skin_damage"
+                           placeholder="Язвы, повреждения"
+                           required>
+                </div>
+            </template>
+
+            <template v-else-if="type === 'walk'">
+                <h3>Длительность прогулки</h3>
+
+                <div class="form-group">
+                    <select class="form-control" v-model="pain_value" required>
+                        <option value="">Выберите значение</option>
+                        <option value="00:00">Без прогулки</option>
+                        <option value="15:00">15 минут</option>
+                        <option value="30:00">30 минут</option>
+                        <option value="45:00">45 минут</option>
+                        <option value="60:00">1 час</option>
+                        <option value="90:00">1 час 30 минут</option>
+                    </select>
+                </div>
+            </template>
+
+            <template v-else-if="type === 'dosug'">
+                <h3>Опишите досуг пациента</h3>
+
+                <div class="form-group">
+                    <input type="text"
+                           class="form-control"
+                           v-model="dosug_type"
+                           placeholder="Телевизор, музыка, чтение"
+                           required>
+                </div>
+
+                <div class="form-group">
+                    <select class="form-control" v-model="dosug_duration" required>
+                        <option value="">Выберите длительность</option>
+                        <option value="15:00">15 минут</option>
+                        <option value="30:00">30 минут</option>
+                        <option value="45:00">45 минут</option>
+                        <option value="60:00">1 час</option>
+                        <option value="90:00">1 час 30 минут</option>
+                        <option value="120:00">2 часа</option>
+                    </select>
+                </div>
             </template>
 
             <template v-else-if="type === 'liquid'">
@@ -171,7 +235,12 @@
                 toilet_color: '',
                 toilet_form: '',
                 sleep_hours: '',
-                pain_value: ''
+                pain_value: '',
+                skin_color: '',
+                skin_dryness: '',
+                skin_damage: '',
+                dosug_type: '',
+                dosug_duration: '',
             };
         },
 
