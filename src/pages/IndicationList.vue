@@ -2,13 +2,7 @@
     <div class="page page-indication-list">
         <h1>Измерения</h1>
 
-        <div class="page-date-selector">
-            <a href="#" class="prev-date" :class="prevDateClassList" @click.prevent="prevDate"></a>
-
-            <span>{{ dateLabel }}</span>
-
-            <a href="#" class="next-date" :class="nextDateClassList" @click.prevent="nextDate"></a>
-        </div>
+        <date-selector :date="date" @change="setDate($event)"/>
 
         <ul class="indication-list">
             <template v-for="(group, i) in groupedIndicationRows">
@@ -44,50 +38,29 @@
 </template>
 
 <script>
+    import DateSelector from '@/components/DateSelector.vue';
+
     import './assets/scss/_IndicationList.scss';
 
     export default {
         name: 'page-indication-list',
+
+        components: {
+            DateSelector
+        },
 
         created() {
             this.load();
         },
 
         data() {
-            let currentDate = new Date(),
-                date = currentDate;
-
-            if (this.$route.params.date) {
-                let routeDate = new Date(this.$route.params.date);
-
-                if (isNaN(routeDate.getTime()) === false) {
-                    date = routeDate;
-                }
-            }
-
             return {
-                currentDate: currentDate,
-                currentDateLabel: this.calcDateLabel(date),
-                date: date,
+                date: this.$route.params.date,
                 rows: []
             };
         },
 
         computed: {
-            dateLabel() {
-                return this.calcDateLabel(this.date);
-            },
-
-            prevDateClassList() {
-                return {};
-            },
-
-            nextDateClassList() {
-                return {
-                    disabled: this.calcDateLabel(this.currentDate) === this.dateLabel
-                };
-            },
-
             groupedIndicationRows() {
                 return [
                     {
@@ -155,52 +128,12 @@
                 });
             },
 
-            /**
-             * @param {Date} date
-             * @returns {string}
-             */
-            calcDateLabel(date) {
-                return date.toLocaleString('ru', {
-                    year: 'numeric',
-                    month: 'short',
-                    day: '2-digit'
-                });
-            },
+            setDate(date) {
+                this.date = date;
 
-            /**
-             * @param {Date} date
-             * @returns {string}
-             */
-            calcDateIsoLabel(date) {
-                return date.toISOString().split('T')[0];
-            },
-
-            prevDate() {
-                let prevDate = new Date(this.date);
-
-                prevDate.setHours(this.date.getHours() - 24);
-
-                this.date = prevDate;
-
-                this.updateRoute();
-            },
-
-            nextDate() {
-                let nextDate = new Date(this.date);
-
-                nextDate.setHours(this.date.getHours() + 24);
-
-                this.date = nextDate;
-
-                this.updateRoute();
-            },
-
-            updateRoute() {
                 this.$router.replace({
                     name: 'page-indication-list',
-                    params: {
-                        date: this.calcDateIsoLabel(this.date)
-                    }
+                    params: {date}
                 });
             }
         }

@@ -2,19 +2,7 @@
     <div class="page page-todo-list">
         <h1>Чек-лист на день</h1>
 
-        <div class="page-date-selector">
-            <a href="#"
-               class="prev-date"
-               :class="prevDateClassList"
-               @click.prevent="toPrevDate">{{ prevDateLabel }}</a>
-
-            <span>{{ dateLabel }}</span>
-
-            <a href="#"
-               class="next-date"
-               :class="nextDateClassList"
-               @click.prevent="toNextDate">{{ nextDateLabel }}</a>
-        </div>
+        <date-selector :date="date" @change="setDate($event)"/>
 
         <ul class="todo-list">
             <li v-for="(row, i) in rows" :key="i">
@@ -37,77 +25,26 @@
 </template>
 
 <script>
+    import DateSelector from '@/components/DateSelector.vue';
+
     import './assets/scss/_TodoList.scss';
 
     export default {
         name: 'page-todo-list',
+
+        components: {
+            DateSelector
+        },
 
         created() {
             this.load();
         },
 
         data() {
-            let currentDate = new Date(),
-                date = currentDate;
-
-            if (this.$route.params.date) {
-                let routeDate = new Date(this.$route.params.date);
-
-                if (isNaN(routeDate.getTime()) === false) {
-                    date = routeDate;
-                }
-            }
-
             return {
-                currentDate: currentDate,
-                currentDateIsoLabel: this.calcDateIsoLabel(date),
-                date: date,
+                date: this.$route.params.date,
                 rows: []
             };
-        },
-
-        computed: {
-            dateLabel() {
-                return this.calcDateLabel(this.date);
-            },
-
-            dateIsoLabel() {
-                return this.calcDateIsoLabel(this.date);
-            },
-
-            prevDate() {
-                let prevDate = new Date(this.date);
-
-                prevDate.setHours(this.date.getHours() - 24);
-
-                return prevDate;
-            },
-
-            prevDateLabel() {
-                return this.calcDateLabel(this.prevDate);
-            },
-
-            prevDateClassList() {
-                return {};
-            },
-
-            nextDate() {
-                let nextDate = new Date(this.date);
-
-                nextDate.setHours(this.date.getHours() + 24);
-
-                return nextDate;
-            },
-
-            nextDateLabel() {
-                return this.calcDateLabel(this.nextDate);
-            },
-
-            nextDateClassList() {
-                return {
-                    disabled: this.currentDateIsoLabel === this.dateIsoLabel
-                };
-            }
         },
 
         methods: {
@@ -117,43 +54,12 @@
                 });
             },
 
-            /**
-             * @param {Date} date
-             * @returns {string}
-             */
-            calcDateLabel(date) {
-                return date.toLocaleDateString('ru', {
-                    month: 'short',
-                    day: 'numeric'
-                });
-            },
+            setDate(date) {
+                this.date = date;
 
-            /**
-             * @param {Date} date
-             * @returns {string}
-             */
-            calcDateIsoLabel(date) {
-                return date.toISOString().split('T')[0];
-            },
-
-            toPrevDate() {
-                this.date = this.prevDate;
-
-                this.updateRoute();
-            },
-
-            toNextDate() {
-                this.date = this.nextDate;
-
-                this.updateRoute();
-            },
-
-            updateRoute() {
                 this.$router.replace({
                     name: 'page-todo-list',
-                    params: {
-                        date: this.calcDateIsoLabel(this.date)
-                    }
+                    params: {date}
                 });
             }
         }

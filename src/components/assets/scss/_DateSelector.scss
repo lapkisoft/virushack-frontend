@@ -1,4 +1,4 @@
-.page-date-selector {
+.date-selector {
     display:         flex;
     flex-direction:  row;
     flex-wrap:       nowrap;
@@ -22,7 +22,13 @@
         color:           #334669;
         text-decoration: none;
 
-        &.prev-date {
+        &:hover,
+        &:active,
+        &:focus {
+            text-decoration: none;
+        }
+
+        &.prev {
             justify-content: flex-start;
 
             &:before {
@@ -37,7 +43,7 @@
             }
         }
 
-        &.next-date {
+        &.next {
             justify-content: flex-end;
 
             &:after {
