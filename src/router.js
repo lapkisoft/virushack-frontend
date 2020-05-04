@@ -1,6 +1,7 @@
 import Vue from './vue.js';
 import VueRouter from 'vue-router';
 
+import Main from './pages/Main.vue';
 import IndicationAdd from './pages/IndicationAdd.vue';
 import IndicationForm from './pages/IndicationForm.vue';
 import IndicationList from './pages/IndicationList.vue';
@@ -16,6 +17,11 @@ Vue.use(VueRouter);
 const router = new VueRouter({
     mode: 'history',
     routes: [
+        {
+            name: Main.name,
+            path: '/',
+            component: Main,
+        },
         {
             name: IndicationAdd.name,
             path: '/indication-add',
