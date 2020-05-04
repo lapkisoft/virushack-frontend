@@ -1,4 +1,6 @@
 .page-main {
+    padding: 40px 0 0;
+
     img.logo {
         display: block;
         width: 80px;
@@ -8,16 +10,44 @@
         object-fit: scale-down;
     }
 
-    ul.menu {
-        margin: 0;
-        padding: 0;
-        list-style: none;
+    h2 {
+        margin: 0 0 10px;
+        font-size: 20px;
+        font-weight: 700;
+        line-height: 24px;
+        text-align: center;
+    }
 
-        > li {
-            margin: 0 0 15px;
+    h3 {
+        margin: 0 0 30px;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 17px;
+        text-align: center;
+        color: rgba(51, 70, 105, 0.6);
+    }
 
-            .button {
-                padding: 15px;
+    .controls {
+        max-width: 275px;
+        margin: 0 auto;
+
+        .button {
+            &.button-registration {
+                position: relative;
+                padding: 20px 60px;
+
+                &:before {
+                    content: '';
+                    display: block;
+                    position: absolute;
+                    top: 20px;
+                    left: 30px;
+                    width: 22px;
+                    height: 22px;
+                    background-image: url(/img/registration.svg);
+                    background-repeat: no-repeat;
+                    background-position: center center;
+                }
             }
         }
     }

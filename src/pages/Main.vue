@@ -1,24 +1,13 @@
 <template>
     <div class="page page-main">
-        <img src="/img/heart.png" alt="" class="logo">
+        <img src="/img/doc.svg" alt="" class="logo">
 
-        <ul class="menu">
-            <li>
-                <router-link class="button" to="/todo-list">Чек-лист на сегодня</router-link>
-            </li>
-            <li>
-                <router-link class="button" to="/indication-list">Измерения</router-link>
-            </li>
-            <li>
-                <router-link class="button" to="/quiz">Опрос состояния больного</router-link>
-            </li>
-            <li>
-                <router-link class="button" to="/recommendations">Рекомендации</router-link>
-            </li>
-            <li>
-                <router-link class="button" to="/settings">Настройка</router-link>
-            </li>
-        </ul>
+        <h2>Добро пожаловать</h2>
+        <h3>Добавьте вашего пациента.<br>Это займет всего минуту.</h3>
+
+        <div class="controls">
+            <router-link to="/registration" class="button button-registration">Новый пациент</router-link>
+        </div>
     </div>
 </template>
 

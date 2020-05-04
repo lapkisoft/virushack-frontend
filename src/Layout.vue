@@ -58,16 +58,23 @@
     import '@/assets/scss/_layout.scss';
 
     const prevRouteMap = {
-        'page-todo-list': 'page-main',
-        'page-indication-list': 'page-main',
-        'page-quiz': 'page-main',
-        'page-settings': 'page-main',
-        'page-recommendations': 'page-main',
+        'page-registration': 'page-dashboard',
+        'page-todo-list': 'page-dashboard',
+        'page-indication-list': 'page-dashboard',
+        'page-quiz': 'page-dashboard',
+        'page-settings': 'page-dashboard',
+        'page-recommendations': 'page-dashboard',
         'page-indication-add': 'page-indication-list',
-        'page-indication-form': 'page-indication-add',
+        'page-indication-form-for-type': 'page-indication-add',
+        'page-indication-form-for-item': 'page-todo-list',
         'page-todo-settings': 'page-todo-list',
         'page-todo-form': 'page-todo-settings'
     };
+
+    const hiddenMenuButtonRouteList = [
+        'page-main',
+        'page-registration',
+    ];
 
     export default {
         created() {
@@ -98,7 +105,8 @@
             classList() {
                 return {
                     'page-scrolled': this.page_scrolled,
-                    'menu-opened': this.menu_opened
+                    'menu-opened': this.menu_opened,
+                    'menu-button-hidden': hiddenMenuButtonRouteList.indexOf(this.route_name) >= 0
                 };
             },
 

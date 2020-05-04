@@ -11,6 +11,8 @@ import Settings from './pages/Settings.vue';
 import TodoForm from './pages/TodoForm.vue';
 import TodoList from './pages/TodoList.vue';
 import TodoSettings from './pages/TodoSettings.vue';
+import Registration from './pages/Registration.vue';
+import Dashboard from './pages/Dashboard';
 
 Vue.use(VueRouter);
 
@@ -21,6 +23,16 @@ const router = new VueRouter({
             name: Main.name,
             path: '/',
             component: Main
+        },
+        {
+            name: Dashboard.name,
+            path: '/dashboard',
+            component: Dashboard
+        },
+        {
+            name: Registration.name,
+            path: '/registration',
+            component: Registration,
         },
         {
             name: IndicationAdd.name,

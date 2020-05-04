@@ -25,6 +25,10 @@ header {
         position: relative;
         z-index: 2;
 
+        .menu-button-wrapper {
+            transition: opacity 0.25s;
+        }
+
         .menu-button-wrapper button,
         .back-button-wrapper a {
             display: flex;
@@ -154,6 +158,15 @@ header {
     #app.page-scrolled & {
         box-shadow: 0 0 10px #cccccc;
     }
+
+    #app.menu-button-hidden & {
+        nav {
+            .menu-button-wrapper {
+                opacity: 0;
+                pointer-events: none;
+            }
+        }
+    }
 }
 
 main {
@@ -165,6 +178,8 @@ main {
         h1 {
             margin: 0 0 25px;
             font-size: 24px;
+            font-weight: 600;
+            text-align: center;
         }
     }
 }
