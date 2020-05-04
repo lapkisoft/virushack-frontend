@@ -4,7 +4,10 @@
 
         <ul class="indication-add">
             <li v-for="(indicationType, i) in types" :key="i">
-                <router-link class="button" :to="{name: 'page-indication-form', params: {type: indicationType.type}}">
+                <router-link
+                        class="button"
+                        :class="[`type-${indicationType.type}`]"
+                        :to="{name: 'page-indication-form', params: {type: indicationType.type}}">
                     <div class="icon">
                         <img :src="indicationType.icon" alt="">
                     </div>
