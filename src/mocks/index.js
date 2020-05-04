@@ -3,7 +3,7 @@ import TodoList from './todo-list.json';
 import TodoSettings from './todo-settings.json';
 
 export default {
-    '/indication-list': IndicationList,
-    '/todo-list': TodoList,
-    '/todo-settings': TodoSettings
+    '/dich-indication-list': IndicationList,
+    '/dich-todo-list': TodoList,
+    '/dich-todo-settings': TodoSettings
 };

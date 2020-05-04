@@ -45,7 +45,7 @@ function buildFetchOptions(method, body, headers = {}) {
         cache: 'default'
     };
 
-    if (['POST', 'PUT'].indexOf(method) !== -1) {
+    if (['POST', 'PUT', 'PATCH'].indexOf(method) !== -1) {
         if (body instanceof FormData) {
             options.body = body;
         } else if (typeof body === 'object' && body !== null) {

@@ -1,46 +1,46 @@
 [
     {
-        "type": "pressure",
+        "type": "PulsePressure",
         "name": "Давление и пульс",
         "icon": "/img/icons/indication-pressure.svg"
     },
     {
-        "type": "temperature",
+        "type": "Temperature",
         "name": "Температура",
         "icon": "/img/icons/indication-temperature.svg"
     },
     {
-        "type": "liquid",
+        "type": "Liquid",
         "name": "Жидкость",
         "icon": "/img/icons/indication-liquid.svg"
     },
     {
-        "type": "toilet",
+        "type": "Defecation",
         "name": "Туалет",
         "icon": "/img/icons/indication-toilet.svg"
     },
     {
-        "type": "sleep",
+        "type": "Sleep",
         "name": "Сон",
         "icon": "/img/icons/indication-sleep.svg"
     },
     {
-        "type": "pain",
+        "type": "Pain",
         "name": "Боль",
         "icon": "/img/icons/indication-pain.svg"
     },
     {
-        "type": "skin",
+        "type": "SkinDamage",
         "name": "Повреждения кожи",
         "icon": "/img/icons/indication-skin.svg"
     },
     {
-        "type": "walk",
+        "type": "Walk",
         "name": "Прогулка",
         "icon": "/img/icons/indication-walk.svg"
     },
     {
-        "type": "dosug",
+        "type": "Dosug",
         "name": "Досуг",
         "icon": "/img/icons/indication-dosug.svg"
     }

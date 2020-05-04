@@ -5,5 +5,5 @@ import mocks from '../mocks/index.js';
 Vue.use(VueApiPlugin, {
     mocks,
 
-    baseUrl: '/api'
+    baseUrl: 'https://lapkisoft.me/api'
 });

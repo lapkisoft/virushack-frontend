@@ -1,9 +1,9 @@
 <template>
-    <div class="page page-indication-form">
+    <div class="page page-indication-form" v-if="type">
         <h1>{{ name }}</h1>
 
-        <form action="">
-            <template v-if="type === 'pressure'">
+        <form action="" @submit.prevent="submit">
+            <template v-if="type === checklistItemTypes.PULSE_PRESSURE">
                 <h3>Давление</h3>
 
                 <div class="form-group">
@@ -33,7 +33,7 @@
                 </div>
             </template>
 
-            <template v-else-if="type === 'temperature'">
+            <template v-else-if="type === checklistItemTypes.TEMPERATURE">
                 <h3>Измерьте температуру</h3>
 
                 <div class="form-group">
@@ -45,7 +45,7 @@
                 </div>
             </template>
 
-            <template v-else-if="type === 'toilet'">
+            <template v-else-if="type === checklistItemTypes.DEFECATION">
                 <h3>Опишите стул</h3>
 
                 <div class="form-group">
@@ -65,7 +65,7 @@
                 </div>
             </template>
 
-            <template v-else-if="type === 'sleep'">
+            <template v-else-if="type === checklistItemTypes.SLEEP">
                 <h3>Примерное время сна</h3>
 
                 <div class="form-group">
@@ -77,7 +77,7 @@
                 </div>
             </template>
 
-            <template v-else-if="type === 'pain'">
+            <template v-else-if="type === checklistItemTypes.PAIN">
                 <h3>Оцените болевые ощущения</h3>
 
                 <div class="form-group">
@@ -98,7 +98,7 @@
                 </div>
             </template>
 
-            <template v-else-if="type === 'skin'">
+            <template v-else-if="type === checklistItemTypes.SKIN_DAMAGE">
                 <h3>Кожный покров</h3>
 
                 <div class="form-group">
@@ -126,7 +126,7 @@
                 </div>
             </template>
 
-            <template v-else-if="type === 'walk'">
+            <template v-else-if="type === checklistItemTypes.WALK">
                 <h3>Длительность прогулки</h3>
 
                 <div class="form-group">
@@ -142,7 +142,7 @@
                 </div>
             </template>
 
-            <template v-else-if="type === 'dosug'">
+            <template v-else-if="type === checklistItemTypes.DOSUG">
                 <h3>Опишите досуг пациента</h3>
 
                 <div class="form-group">
@@ -166,7 +166,7 @@
                 </div>
             </template>
 
-            <template v-else-if="type === 'liquid'">
+            <template v-else-if="type === checklistItemTypes.LIQUID">
                 <h3>Выпито жидкости</h3>
 
                 <div class="form-group">
@@ -212,19 +212,51 @@
 
 <script>
     import indicationTypes from '@/codex/indication-types.json';
+    import checklistItemTypes from '@/codex/checklist-item-types.json';
 
     import './assets/scss/_IndicationForm.scss';
 
+    const nameForType = 'page-indication-form-for-type';
+    const nameForItem = 'page-indication-form-for-item';
+
     export default {
-        name: 'page-indication-form',
+        nameForType,
+        nameForItem,
 
         created() {
-            this.type = this.$route.params.type;
+            switch (this.$route.name) {
+                case nameForType:
+                    this.type = this.$route.params.type;
+
+                    break;
+
+                case nameForItem:
+                    this.item_id = this.$route.params.item_id;
+
+                    this.loadTypeByItemId();
+
+                    break;
+            }
+
+            this.load();
         },
 
         data() {
             return {
+                checklistItemTypes,
+
+                date: new Date().toISOString().split('T')[0],
+
                 type: null,
+
+                item_id: null,
+                item_type: null,
+                item_description: null,
+                item_date: null,
+                item_time: null,
+
+                indication_list_id: null,
+
                 pressure_low: '',
                 pressure_high: '',
                 pressure_pulse: '',
@@ -240,7 +272,7 @@
                 skin_dryness: '',
                 skin_damage: '',
                 dosug_type: '',
-                dosug_duration: '',
+                dosug_duration: ''
             };
         },
 
@@ -253,6 +285,68 @@
                 }
 
                 return type.name;
+            }
+        },
+
+        methods: {
+            load() {
+                this.getIndicationList().then((indicationList) => {
+                    this.indication_list_id = indicationList.id;
+                });
+            },
+
+            submit() {
+                switch (this.type) {
+                    case checklistItemTypes.PULSE_PRESSURE:
+                        this.$api.postIndicationPulsePressure(this.date, this.pressure_low, this.pressure_high, this.pressure_pulse).then(() => {
+                            this.afterSubmit();
+                        });
+
+                        break;
+
+                    default:
+                        console.log('Unknown type!', this.type);
+                }
+            },
+
+            afterSubmit() {
+                switch (this.$route.name) {
+                    case nameForType:
+                        this.$router.push({name: 'page-indication-list'});
+                        break;
+
+                    case nameForItem:
+                        this.$api.patchCheckItem(this.item_id, this.item_type, this.item_date, this.item_time, true, this.item_description).then(() => {
+                            this.$router.push({name: 'page-todo-list'});
+                        });
+
+                        break;
+                }
+            },
+
+            getIndicationList() {
+                return new Promise((resolve, reject) => {
+                    this.$api.getIndicationList(this.date).then(resolve, () => {
+                        this.$api.postIndicationList(this.date).then(resolve, reject);
+                    });
+                });
+            },
+
+            loadTypeByItemId() {
+                if (!this.item_id) {
+                    return;
+                }
+
+                this.$api.getCheckItemById(this.item_id).then((item) => {
+                    this.type = item.type;
+
+                    let timeParts = item.time.split(/[TZ]/);
+
+                    this.item_type = item.type;
+                    this.item_description = item.description;
+                    this.item_date = timeParts[0];
+                    this.item_time = timeParts[1];
+                });
             }
         }
     };

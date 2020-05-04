@@ -1,5 +1,6 @@
 import Vue from './vue.js';
 
+import './filters.js';
 import './plugins.js';
 
 import router from './router.js';

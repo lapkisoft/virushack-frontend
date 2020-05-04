@@ -7,7 +7,7 @@
                 <router-link
                         class="button"
                         :class="[`type-${indicationType.type}`]"
-                        :to="{name: 'page-indication-form', params: {type: indicationType.type}}">
+                        :to="{name: 'page-indication-form-for-type', params: {type: indicationType.type}}">
                     <div class="icon">
                         <img :src="indicationType.icon" alt="">
                     </div>

@@ -87,8 +87,8 @@
 
         methods: {
             load() {
-                this.$api.getIndicationList().then(({data}) => {
-                    this.rows = data;
+                this.$api.getDichIndicationList().then(({items}) => {
+                    this.rows = items;
                 });
             },
 

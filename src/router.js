@@ -20,17 +20,22 @@ const router = new VueRouter({
         {
             name: Main.name,
             path: '/',
-            component: Main,
+            component: Main
         },
         {
             name: IndicationAdd.name,
             path: '/indication-add',
-            component: IndicationAdd,
+            component: IndicationAdd
         },
         {
-            name: IndicationForm.name,
-            path: '/indication-form/:type',
-            component: IndicationForm,
+            name: IndicationForm.nameForType,
+            path: '/indication-form-type/:type',
+            component: IndicationForm
+        },
+        {
+            name: IndicationForm.nameForItem,
+            path: '/indication-form-item/:item_id',
+            component: IndicationForm
         },
         {
             name: IndicationList.name,

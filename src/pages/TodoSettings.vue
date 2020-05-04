@@ -73,7 +73,7 @@
 
         methods: {
             load() {
-                this.$api.getTodoSettings().then(({data}) => {
+                this.$api.getDichTodoSettings().then(({data}) => {
                     this.rows = data;
                 });
             }

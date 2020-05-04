@@ -1,61 +1,61 @@
 {
-    "data": [
+    "items": [
         {
-            "type": "liquid",
+            "type": "Liquid",
             "name": "Выпито, молоко",
             "value": "200мл",
             "time": "10:45"
         },
         {
-            "type": "liquid",
+            "type": "Liquid",
             "name": "Выпито, чай",
             "value": "250мл",
             "time": "11:30"
         },
         {
-            "type": "liquid",
+            "type": "Liquid",
             "name": "Выделено",
             "value": "200мл",
             "time": "12:45"
         },
         {
-            "type": "liquid",
+            "type": "Liquid",
             "name": "Выпито, чай",
             "value": "250мл",
             "time": "17:15"
         },
         {
-            "type": "pressure",
+            "type": "PulsePressure",
             "name": "Давление",
             "value": "120/80",
             "time": "08:30"
         },
         {
-            "type": "pressure",
+            "type": "PulsePressure",
             "name": "Пульс",
             "value": "70",
             "time": "08:30"
         },
         {
-            "type": "pressure",
+            "type": "PulsePressure",
             "name": "Давление",
             "value": "130/90",
             "time": "17:30"
         },
         {
-            "type": "pressure",
+            "type": "PulsePressure",
             "name": "Пульс",
             "value": "75",
             "time": "17:30"
         },
         {
-            "type": "sleep",
+            "type": "Sleep",
             "name": "Часы сна",
             "value": "6",
             "time": "10:45"
         },
         {
-            "type": "sleep",
+            "type": "Sleep",
             "name": "Часы сна",
             "value": "1",
             "time": "17:30"

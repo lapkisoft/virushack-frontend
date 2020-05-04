@@ -1,0 +1,12 @@
+{
+    "PULSE_PRESSURE": "PulsePressure",
+    "TEMPERATURE": "Temperature",
+    "LIQUID": "Liquid",
+    "DEFECATION": "Defecation",
+    "SKIN_DAMAGE": "SkinDamage",
+    "SLEEP": "Sleep",
+    "PAIN": "Pain",
+    "WALK": "Walk",
+    "DOSUG": "Dosug",
+    "CUSTOM": "Custom"
+}
