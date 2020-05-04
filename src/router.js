@@ -13,6 +13,7 @@ import TodoList from './pages/TodoList.vue';
 import TodoSettings from './pages/TodoSettings.vue';
 import Registration from './pages/Registration.vue';
 import Dashboard from './pages/Dashboard';
+import DiseaseDynamics from './pages/DiseaseDynamics.vue';
 
 Vue.use(VueRouter);
 
@@ -28,6 +29,11 @@ const router = new VueRouter({
             name: Dashboard.name,
             path: '/dashboard',
             component: Dashboard
+        },
+        {
+            name: DiseaseDynamics.name,
+            path: '/disease-dynamics/:type?',
+            component: DiseaseDynamics
         },
         {
             name: Registration.name,

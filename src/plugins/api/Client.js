@@ -121,6 +121,40 @@ class Client {
         });
     }
 
+    deleteIndicationPulsePressure(id) {
+        return this.request('DELETE', `/pulse-pressure/${id}`);
+    }
+
+    // indication temperature
+
+    postIndicationTemperature(date, temperature) {
+        return this.request('POST', '/temperature', null, {
+            date,
+            temperature
+        });
+    }
+
+    deleteIndicationTemperature(id) {
+        return this.request('DELETE', `/temperature/${id}`);
+    }
+
+    // indication sleep
+
+    postIndicationSleep(date, startAt, endAt, wokeUpAtNight, isBadSleep, isLongSleep) {
+        return this.request('POST', '/sleep', null, {
+            date,
+            startAt,
+            endAt,
+            wokeUpAtNight,
+            isBadSleep,
+            isLongSleep
+        });
+    }
+
+    deleteIndicationSleep(id) {
+        return this.request('DELETE', `/sleep/${id}`);
+    }
+
     getDichIndicationList(query = {}) {
         return this.fetch('/dich-indication-list', query);
     }

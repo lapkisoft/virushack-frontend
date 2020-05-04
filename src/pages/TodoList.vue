@@ -1,10 +1,10 @@
 <template>
     <div class="page page-todo-list">
-        <h1>Чек-лист на день</h1>
+        <h1>Задачи на день</h1>
 
         <date-selector :date="date" @change="setDate($event)"/>
 
-        <ul class="todo-list">
+        <ul class="checkbox-list">
             <li v-for="(row, i) in rows" :key="i">
                 <input :id="`todo-item-${i}-input`"
                        :checked="row.completed"
@@ -13,7 +13,6 @@
                 <label :for="`todo-item-${i}-input`" @click.prevent="checkboxItemAction(row)">
                     <div class="checkbox"></div>
                     <div class="name">{{ row.label }}</div>
-                    <div class="time">{{ row.time | timeFromTimestamp }}</div>
                 </label>
             </li>
         </ul>
@@ -66,9 +65,16 @@
                     },
                     {
                         type: checklistItemTypes.TEMPERATURE,
-                        time: '11:00',
+                        time: '10:10',
                         description: JSON.stringify({
                             label: 'Замерить температуру'
+                        })
+                    },
+                    {
+                        type: checklistItemTypes.SLEEP,
+                        time: '10:20',
+                        description: JSON.stringify({
+                            label: 'Указать количество сна больного'
                         })
                     },
                     {
@@ -143,20 +149,57 @@
             },
 
             refresh() {
-                this.getChecklist().then(checklist => {
-                    let promises = [];
+                let promises = [];
 
-                    for (let item of checklist.items) {
-                        promises.push(this.$api.deleteCheckItem(item.id));
+                promises.push(this.getChecklist());
+                promises.push(this.getIndicationList());
+
+                Promise.all(promises).then(([checkList, indicationList]) => {
+                    let deletion = [];
+
+                    for (let item of checkList.items) {
+                        deletion.push(this.$api.deleteCheckItem(item.id));
                     }
 
-                    for (let {type, time, description} of this.defaultItems) {
-                        promises.push(this.$api.postCheckItem(type, this.date, time, description));
+                    for (let {id, type} of indicationList.items) {
+                        deletion.push(this.getDeleteIndicationPromise(id, type));
                     }
 
-                    Promise.all(promises).finally(() => {
-                        this.load();
+                    Promise.all(deletion).finally(() => {
+                        let creation = [];
+
+                        for (let {type, time, description} of this.defaultItems) {
+                            creation.push(this.$api.postCheckItem(type, this.date, time, description));
+                        }
+
+                        Promise.all(creation).finally(() => {
+                            this.load();
+                        });
                     });
+                });
+            },
+
+            getDeleteIndicationPromise(id, type) {
+                return new Promise((resolve, reject) => {
+                    switch (type) {
+                        case checklistItemTypes.PULSE_PRESSURE:
+                            this.$api.deleteIndicationPulsePressure(id).then(resolve, reject);
+
+                            break;
+
+                        case checklistItemTypes.TEMPERATURE:
+                            this.$api.deleteIndicationTemperature(id).then(resolve, reject);
+
+                            break;
+
+                        case checklistItemTypes.SLEEP:
+                            this.$api.deleteIndicationSleep(id).then(resolve, reject);
+
+                            break;
+
+                        default:
+                            resolve();
+                    }
                 });
             },
 
@@ -178,10 +221,19 @@
                 });
             },
 
+            getIndicationList() {
+                return new Promise((resolve, reject) => {
+                    this.$api.getIndicationList(this.date).then(resolve, () => {
+                        this.$api.postIndicationList(this.date).then(resolve, reject);
+                    });
+                });
+            },
+
             checkboxItemAction(item) {
                 switch (item.type) {
                     case checklistItemTypes.PULSE_PRESSURE:
                     case checklistItemTypes.TEMPERATURE:
+                    case checklistItemTypes.SLEEP:
                         this.$router.push({name: IndicationForm.nameForItem, params: {item_id: item.id}});
 
                         break;

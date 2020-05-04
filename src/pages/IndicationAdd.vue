@@ -6,7 +6,7 @@
             <li v-for="(indicationType, i) in types" :key="i">
                 <router-link
                         class="button"
-                        :class="[`type-${indicationType.type}`]"
+                        :class="[`type-${indicationType.type.toLowerCase()}`]"
                         :to="{name: 'page-indication-form-for-type', params: {type: indicationType.type}}">
                     <div class="icon">
                         <img :src="indicationType.icon" alt="">

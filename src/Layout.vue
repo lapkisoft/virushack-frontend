@@ -21,12 +21,7 @@
                 <menu>
                     <li>
                         <router-link @click.native="toggleMenu(false)" to="/todo-list">
-                            Чек-лист на сегодня
-                        </router-link>
-                    </li>
-                    <li>
-                        <router-link @click.native="toggleMenu(false)" to="/indication-list">
-                            Измерения
+                            Список задач на сегодня
                         </router-link>
                     </li>
                     <li>
@@ -35,8 +30,18 @@
                         </router-link>
                     </li>
                     <li>
+                        <router-link @click.native="toggleMenu(false)" to="/indication-list">
+                            Измерения
+                        </router-link>
+                    </li>
+                    <li>
                         <router-link @click.native="toggleMenu(false)" to="/recommendations">
                             Рекомендации
+                        </router-link>
+                    </li>
+                    <li>
+                        <router-link @click.native="toggleMenu(false)" to="/disease-dynamics">
+                            Динамика болезни
                         </router-link>
                     </li>
                     <li>
@@ -58,11 +63,12 @@
     import '@/assets/scss/_layout.scss';
 
     const prevRouteMap = {
-        'page-registration': 'page-dashboard',
+        'page-registration': 'page-main',
         'page-todo-list': 'page-dashboard',
         'page-indication-list': 'page-dashboard',
         'page-quiz': 'page-dashboard',
         'page-settings': 'page-dashboard',
+        'page-disease-dynamics': 'page-dashboard',
         'page-recommendations': 'page-dashboard',
         'page-indication-add': 'page-indication-list',
         'page-indication-form-for-type': 'page-indication-add',

@@ -42,47 +42,39 @@
                     color: #334669;
                 }
 
-                &.type-pressure .icon {
+                &.type-pulsepressure .icon {
                     background-color: rgba(254, 170, 160, 0.1);
                 }
 
                 &.type-temperature .icon {
-                    background-color: #f1c57e;
                     background-color: rgba(254, 170, 160, 0.1);
                 }
 
                 &.type-liquid .icon {
-                    background-color: #a0b5fe;
                     background-color: rgba(160, 181, 254, 0.1);
                 }
 
-                &.type-toilet .icon {
-                    background-color: #a0edfe;
+                &.type-defecation .icon {
                     background-color: rgba(160, 237, 254, 0.1);
                 }
 
                 &.type-sleep .icon {
-                    background-color: #cd8aca;
                     background-color: rgba(205, 138, 202, 0.1);
                 }
 
                 &.type-pain .icon {
-                    background-color: #ff3737;
                     background-color: rgba(255, 55, 55, 0.1);
                 }
 
-                &.type-skin .icon {
-                    background-color: #ffb946;
+                &.type-skindamage .icon {
                     background-color: rgba(255, 185, 70, 0.1);
                 }
 
                 &.type-walk .icon {
-                    background-color: #2861b6;
                     background-color: rgba(40, 97, 182, 0.1);
                 }
 
                 &.type-dosug .icon {
-                    background-color: #1ad27a;
                     background-color: rgba(26, 210, 122, 0.1);
                 }
             }

@@ -89,6 +89,10 @@ export default class RestClient {
                     return reject(response.statusText);
                 }
 
+                if (response.status === 204) {
+                    return resolve({});
+                }
+
                 response.json().then((json) => resolve(json), () => reject('Response not in json format'));
             }, () => reject('Request failed'));
         });

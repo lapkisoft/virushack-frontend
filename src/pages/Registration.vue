@@ -7,7 +7,7 @@
                 <input type="text"
                        class="form-control"
                        v-model="name"
-                       placeholder="Введите имя пациента"
+                       placeholder="Введите имя подопечного"
                        required>
             </div>
 
@@ -15,7 +15,7 @@
                 <input type="text"
                        class="form-control"
                        v-model="age"
-                       placeholder="Количество полных лет пациента"
+                       placeholder="Количество полных лет подопечного"
                        required>
             </div>
 

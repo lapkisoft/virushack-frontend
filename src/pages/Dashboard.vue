@@ -13,7 +13,7 @@
         </router-link>
 
         <template v-if="personalArticles.length > 0">
-            <h3>Рекомендации для пациента</h3>
+            <h3>Рекомендации для подопечного</h3>
 
             <ul class="articles">
                 <li v-for="(article, i) in personalArticles" :key="i">

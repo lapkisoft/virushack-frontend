@@ -3,7 +3,7 @@
         <img src="/img/doc.svg" alt="" class="logo">
 
         <h2>Добро пожаловать</h2>
-        <h3>Добавьте вашего пациента.<br>Это займет всего минуту.</h3>
+        <h3>Добавьте вашего подопечного.<br>Это займет всего минуту.</h3>
 
         <div class="controls">
             <router-link to="/registration" class="button button-registration">Новый пациент</router-link>

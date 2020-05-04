@@ -66,15 +66,54 @@
             </template>
 
             <template v-else-if="type === checklistItemTypes.SLEEP">
-                <h3>Примерное время сна</h3>
+                <h3>Начало сна</h3>
 
                 <div class="form-group">
                     <input type="text"
                            class="form-control"
-                           v-model="sleep_hours"
-                           placeholder="7"
+                           v-model="sleep_start_at"
+                           placeholder="22:00"
                            required>
                 </div>
+
+                <h3>Окончание сна</h3>
+
+                <div class="form-group">
+                    <input type="text"
+                           class="form-control"
+                           v-model="sleep_end_at"
+                           placeholder="08:00"
+                           required>
+                </div>
+
+                <ul class="checkbox-list">
+                    <li>
+                        <input id="sleep-woke-up-at-night-input" type="checkbox" v-model="sleep_woke_up_at_night">
+
+                        <label for="sleep-woke-up-at-night-input">
+                            <div class="checkbox"></div>
+                            <div class="name">За ночь просыпался</div>
+                        </label>
+                    </li>
+
+                    <li>
+                        <input id="sleep-is-bad-sleep-input" type="checkbox" v-model="sleep_is_bad_sleep">
+
+                        <label for="sleep-is-bad-sleep-input">
+                            <div class="checkbox"></div>
+                            <div class="name">Есть жалобы на качество сна</div>
+                        </label>
+                    </li>
+
+                    <li>
+                        <input id="sleep-is-long-sleep-input" type="checkbox" v-model="sleep_is_long_sleep">
+
+                        <label for="sleep-is-long-sleep-input">
+                            <div class="checkbox"></div>
+                            <div class="name">Провёл много времени в кровати</div>
+                        </label>
+                    </li>
+                </ul>
             </template>
 
             <template v-else-if="type === checklistItemTypes.PAIN">
@@ -143,7 +182,7 @@
             </template>
 
             <template v-else-if="type === checklistItemTypes.DOSUG">
-                <h3>Опишите досуг пациента</h3>
+                <h3>Опишите досуг подопечного</h3>
 
                 <div class="form-group">
                     <input type="text"
@@ -267,6 +306,11 @@
                 toilet_color: '',
                 toilet_form: '',
                 sleep_hours: '',
+                sleep_start_at: '',
+                sleep_end_at: '',
+                sleep_woke_up_at_night: false,
+                sleep_is_bad_sleep: false,
+                sleep_is_long_sleep: false,
                 pain_value: '',
                 skin_color: '',
                 skin_dryness: '',
@@ -299,6 +343,27 @@
                 switch (this.type) {
                     case checklistItemTypes.PULSE_PRESSURE:
                         this.$api.postIndicationPulsePressure(this.date, this.pressure_low, this.pressure_high, this.pressure_pulse).then(() => {
+                            this.afterSubmit();
+                        });
+
+                        break;
+
+                    case checklistItemTypes.TEMPERATURE:
+                        this.$api.postIndicationTemperature(this.date, this.temperature_value).then(() => {
+                            this.afterSubmit();
+                        });
+
+                        break;
+
+                    case checklistItemTypes.SLEEP:
+                        this.$api.postIndicationSleep(
+                            this.date,
+                            this.sleep_start_at,
+                            this.sleep_end_at,
+                            this.sleep_woke_up_at_night,
+                            this.sleep_is_bad_sleep,
+                            this.sleep_is_long_sleep
+                        ).then(() => {
                             this.afterSubmit();
                         });
 
