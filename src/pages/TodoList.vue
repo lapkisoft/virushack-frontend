@@ -31,6 +31,8 @@
 </template>
 
 <script>
+    import {mapActions, mapState} from 'vuex';
+
     import DateSelector from '@/components/DateSelector.vue';
 
     import checklistItemTypes from '@/codex/checklist-item-types.json';
@@ -54,64 +56,24 @@
                 checklistItemTypes,
 
                 date: this.$route.params.date || new Date().toISOString().split('T')[0],
-                rows: [],
-                defaultItems: [
-                    {
-                        type: checklistItemTypes.PULSE_PRESSURE,
-                        time: '10:00',
-                        description: JSON.stringify({
-                            label: 'Замерить давление и пульс'
-                        })
-                    },
-                    {
-                        type: checklistItemTypes.TEMPERATURE,
-                        time: '10:10',
-                        description: JSON.stringify({
-                            label: 'Замерить температуру'
-                        })
-                    },
-                    {
-                        type: checklistItemTypes.SLEEP,
-                        time: '10:20',
-                        description: JSON.stringify({
-                            label: 'Указать количество сна больного'
-                        })
-                    },
-                    {
-                        type: checklistItemTypes.CUSTOM,
-                        time: '12:00',
-                        description: JSON.stringify({
-                            label: 'Дыхательная гимнастика'
-                        })
-                    },
-                    {
-                        type: checklistItemTypes.CUSTOM,
-                        time: '12:00',
-                        description: JSON.stringify({
-                            label: 'Общетонизирующие упражнения'
-                        })
-                    },
-                    {
-                        type: checklistItemTypes.CUSTOM,
-                        time: '16:00',
-                        description: JSON.stringify({
-                            label: 'Процедура 1'
-                        })
-                    },
-                    {
-                        type: checklistItemTypes.CUSTOM,
-                        time: '18:00',
-                        description: JSON.stringify({
-                            label: 'Процедура 2'
-                        })
-                    }
-                ]
+                rows: []
             };
         },
 
+        computed: {
+            ...mapState([
+                'state'
+            ])
+        },
+
         methods: {
+            ...mapActions([
+                'getChecklist',
+                'getIndicationList',
+            ]),
+
             load() {
-                this.getChecklist().then((checklist) => {
+                this.getChecklist(this.date).then((checklist) => {
                     let items = checklist.items;
 
                     items = items.sort((a, b) => {
@@ -151,8 +113,8 @@
             refresh() {
                 let promises = [];
 
-                promises.push(this.getChecklist());
-                promises.push(this.getIndicationList());
+                promises.push(this.getChecklist(this.date));
+                promises.push(this.getIndicationList(this.date));
 
                 Promise.all(promises).then(([checkList, indicationList]) => {
                     let deletion = [];
@@ -200,32 +162,6 @@
                         default:
                             resolve();
                     }
-                });
-            },
-
-            getChecklist() {
-                return new Promise((resolve, reject) => {
-                    this.$api.getCheckList(this.date).then(resolve, () => {
-                        this.$api.postCheckList(this.date).then(() => {
-                            let promises = [];
-
-                            for (let {type, time, description} of this.defaultItems) {
-                                promises.push(this.$api.postCheckItem(type, this.date, time, description));
-                            }
-
-                            Promise.all(promises).then(() => {
-                                this.$api.getCheckList(this.date).then(resolve, reject);
-                            });
-                        }, reject);
-                    });
-                });
-            },
-
-            getIndicationList() {
-                return new Promise((resolve, reject) => {
-                    this.$api.getIndicationList(this.date).then(resolve, () => {
-                        this.$api.postIndicationList(this.date).then(resolve, reject);
-                    });
                 });
             },
 

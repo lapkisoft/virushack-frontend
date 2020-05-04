@@ -39,6 +39,9 @@
 </template>
 
 <script>
+    import {mapActions} from 'vuex';
+    import checklistItemTypes from '@/codex/checklist-item-types.json';
+
     import './assets/scss/_Dashboard.scss';
 
     export default {
@@ -64,6 +67,10 @@
                 return this.checklist.items.length === this.completedTaskCount;
             },
 
+            sleepTaskCompleted() {
+                return this.checklist.items.filter(({type, completed}) => completed && type === checklistItemTypes.SLEEP).length > 0;
+            },
+
             tasksPlankClassList() {
                 return {
                     completed: this.allTasksCompleted
@@ -75,6 +82,10 @@
             },
 
             personalArticles() {
+                if (this.sleepTaskCompleted === false) {
+                    return [];
+                }
+
                 return [
                     {
                         img: '/img/recommendations/01.png',
@@ -110,29 +121,13 @@
         },
 
         methods: {
+            ...mapActions([
+                'getChecklist'
+            ]),
+
             load() {
-                this.getChecklist().then((checklist) => {
+                this.getChecklist(this.date).then((checklist) => {
                     this.checklist = checklist;
-
-                    console.log(checklist.items);
-                });
-            },
-
-            getChecklist() {
-                return new Promise((resolve, reject) => {
-                    this.$api.getCheckList(this.date).then(resolve, () => {
-                        this.$api.postCheckList(this.date).then(() => {
-                            let promises = [];
-
-                            for (let {type, time, description} of this.defaultItems) {
-                                promises.push(this.$api.postCheckItem(type, this.date, time, description));
-                            }
-
-                            Promise.all(promises).then(() => {
-                                this.$api.getCheckList(this.date).then(resolve, reject);
-                            });
-                        }, reject);
-                    });
                 });
             }
         }
