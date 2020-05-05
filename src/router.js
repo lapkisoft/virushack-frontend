@@ -8,6 +8,7 @@ import IndicationList from './pages/IndicationList.vue';
 import Quiz from './pages/Quiz.vue';
 import Recommendations from './pages/Recommendations.vue';
 import TodoForm from './pages/TodoForm.vue';
+import TodoExtra from './pages/TodoExtra.vue';
 import TodoList from './pages/TodoList.vue';
 import TodoSettings from './pages/TodoSettings.vue';
 import Registration from './pages/Registration.vue';
@@ -96,6 +97,11 @@ const router = new VueRouter({
             name: TodoForm.name,
             path: '/todo-form',
             component: TodoForm
+        },
+        {
+            name: TodoExtra.name,
+            path: '/todo-extra/:item_id',
+            component: TodoExtra
         },
         {
             name: TodoList.name,

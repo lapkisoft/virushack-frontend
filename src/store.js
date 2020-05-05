@@ -42,7 +42,8 @@ export default new Vuex.Store({
                 type: checklistItemTypes.CUSTOM,
                 time: '12:00',
                 description: JSON.stringify({
-                    label: 'Общетонизирующие упражнения'
+                    label: 'Общетонизирующие упражнения',
+                    extra: 'general-tonic-exercises'
                 })
             },
             {

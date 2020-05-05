@@ -82,6 +82,7 @@
         'page-indication-form-for-type': 'page-indication-add',
         'page-indication-form-for-item': 'page-todo-list',
         'page-todo-settings': 'page-todo-list',
+        'page-todo-extra': 'page-todo-list',
         'page-todo-form': 'page-todo-settings'
     };
 

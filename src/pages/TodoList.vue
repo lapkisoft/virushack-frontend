@@ -22,7 +22,7 @@
         </div>
 
         <a href="#"
-           style="position: fixed; left: 15px; bottom: 15px; width: 60px; height: 60px; background-color: #face8d; border-radius: 30px;"
+           style="position: fixed; left: 15px; bottom: 15px; width: 55px; height: 55px; padding: 17px; border-radius: 30px; 2px 9px 30px rgba(170, 187, 201, 0.795345), -8px 5px 12px rgba(244, 248, 251, 0.345662), -13px -7px 15px rgba(246, 251, 255, 0.741505), -7px -7px 12px rgba(255, 255, 255, 0.0155704)"
            class="button"
            @click.prevent="refresh">
             <i class="fa fa-refresh"></i>
@@ -38,7 +38,8 @@
     import checklistItemTypes from '@/codex/checklist-item-types.json';
 
     import './assets/scss/_TodoList.scss';
-    import IndicationForm from '@/pages/IndicationForm';
+    import IndicationForm from './IndicationForm.vue';
+    import TodoExtra from './TodoExtra.vue';
 
     export default {
         name: 'page-todo-list',
@@ -97,6 +98,7 @@
                         }
 
                         item.label = item.fields.label;
+                        item.extra = item.fields.extra;
 
                         return item;
                     });
@@ -181,6 +183,21 @@
                     case checklistItemTypes.TEMPERATURE:
                     case checklistItemTypes.SLEEP:
                         this.$router.push({name: IndicationForm.nameForItem, params: {item_id: item.id}});
+
+                        break;
+
+                    case checklistItemTypes.CUSTOM:
+                        if (item.extra) {
+                            this.$router.push({name: TodoExtra.name, params: {item_id: item.id}});
+                        } else {
+                            let timeParts = item.time.split(/[TZ]/),
+                                date = timeParts[0],
+                                time = timeParts[1];
+
+                            this.$api.patchCheckItem(item.id, item.type, date, time, true, item.description).then(() => {
+                                this.load();
+                            });
+                        }
 
                         break;
 

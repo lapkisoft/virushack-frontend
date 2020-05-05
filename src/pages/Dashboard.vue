@@ -2,7 +2,7 @@
     <div class="page page-dashboard" v-if="checklist">
         <router-link to="/todo-list" class="plank-link" :class="tasksPlankClassList">
             <div class="icon">
-                <img src="/img/icons/warning.svg" alt="">
+                <img :src="allTasksCompleted ? '/img/icons/check.svg' : '/img/icons/warning.svg'" alt="">
             </div>
 
             <div class="label">
@@ -96,7 +96,8 @@
 
             tasksPlankClassList() {
                 return {
-                    danger: !this.allTasksCompleted
+                    danger: !this.allTasksCompleted,
+                    success: this.allTasksCompleted
                 };
             },
 
