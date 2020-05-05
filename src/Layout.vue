@@ -46,7 +46,7 @@
                     </li>
                     <li>
                         <router-link @click.native="toggleMenu(false)" to="/settings">
-                            Настройка
+                            Анкета
                         </router-link>
                     </li>
                     <li class="support">
@@ -69,6 +69,7 @@
 
     const prevRouteMap = {
         'page-registration': 'page-main',
+        'page-registration-settings': 'page-dashboard',
         'page-todo-list': 'page-dashboard',
         'page-indication-list': 'page-dashboard',
         'page-quiz': 'page-dashboard',

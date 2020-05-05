@@ -7,7 +7,6 @@ import IndicationForm from './pages/IndicationForm.vue';
 import IndicationList from './pages/IndicationList.vue';
 import Quiz from './pages/Quiz.vue';
 import Recommendations from './pages/Recommendations.vue';
-import Settings from './pages/Settings.vue';
 import TodoForm from './pages/TodoForm.vue';
 import TodoList from './pages/TodoList.vue';
 import TodoSettings from './pages/TodoSettings.vue';
@@ -89,9 +88,9 @@ const router = new VueRouter({
             component: Recommendations
         },
         {
-            name: Settings.name,
+            name: Registration.name + '-settings',
             path: '/settings',
-            component: Settings
+            component: Registration
         },
         {
             name: TodoForm.name,

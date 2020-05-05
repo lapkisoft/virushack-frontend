@@ -1,0 +1,55 @@
+.page-quiz {
+    h1 {
+        margin: 0 0 50px;
+    }
+
+    h3 {
+        margin: 0 0 10px;
+        font-weight: 600;
+        font-size: 21px;
+        line-height: 26px;
+        color: #334669;
+    }
+
+    .smile-selector {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: center;
+        align-items: flex-start;
+        margin: 25px 0 45px;
+
+        .radio {
+            input[type="radio"] {
+                display: none;
+
+                + label {
+                    display: flex;
+                    flex-direction: row;
+                    flex-wrap: nowrap;
+                    justify-content: center;
+                    align-items: center;
+                    width: 60px;
+                    height: 60px;
+                    margin: 0 8px;
+                    box-shadow: 19px 21px 50px rgba(176, 195, 210, 0.727846), -8px 0px 8px rgba(244, 248, 251, 0.50254), -8px -40px 22px rgba(246, 251, 255, 0.384288), -11px -11px 20px rgba(255, 255, 255, 0.272044);
+                    border-radius: 17.9491px;
+
+                    img {
+                        display: block;
+                        width: 25px;
+                        height: 25px;
+                        object-fit: scale-down;
+                        object-position: center center;
+                    }
+                }
+
+                &:checked {
+                    + label {
+                        box-shadow: inset 0px 2px 4px #c8d4e2, inset 4px 2px 6px #b1c5d5, inset 3px 6px 6px #c3d7e7, inset -6px -3px 5px rgba(255, 255, 255, 0.750601);
+                    }
+                }
+            }
+        }
+    }
+}
