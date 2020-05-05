@@ -41,7 +41,7 @@
                     </li>
                     <li>
                         <router-link @click.native="toggleMenu(false)" to="/disease-dynamics">
-                            Динамика болезни
+                            Статистика
                         </router-link>
                     </li>
                     <li>

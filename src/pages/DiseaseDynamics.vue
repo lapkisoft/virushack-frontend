@@ -1,6 +1,6 @@
 <template>
     <div class="page page-disease-dynamics">
-        <h1>Динамика болезни</h1>
+        <h1>Статистика</h1>
 
         <ul class="navigation-buttons">
             <li v-for="(indication, i) in indications" :key="i">
