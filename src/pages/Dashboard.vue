@@ -65,6 +65,12 @@
     export default {
         name: 'page-dashboard',
 
+        beforeRouteEnter(to, from, next) {
+            window.scrollTo(0, 0);
+
+            next();
+        },
+
         created() {
             this.load();
         },

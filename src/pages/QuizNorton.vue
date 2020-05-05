@@ -301,6 +301,12 @@
     export default {
         name: 'page-quiz-norton',
 
+        beforeRouteEnter(to, from, next) {
+            window.scrollTo(0, 0);
+
+            next();
+        },
+
         data() {
             return {
                 q1: 0,

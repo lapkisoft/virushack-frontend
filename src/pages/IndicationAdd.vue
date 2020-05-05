@@ -27,6 +27,12 @@
     export default {
         name: 'page-indication-add',
 
+        beforeRouteEnter(to, from, next) {
+            window.scrollTo(0, 0);
+
+            next();
+        },
+
         computed: {
             types() {
                 return indicationTypes;

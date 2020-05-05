@@ -262,6 +262,12 @@
         nameForType,
         nameForItem,
 
+        beforeRouteEnter(to, from, next) {
+            window.scrollTo(0, 0);
+
+            next();
+        },
+
         created() {
             switch (this.$route.name) {
                 case nameForType:

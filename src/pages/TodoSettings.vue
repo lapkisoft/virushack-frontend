@@ -61,6 +61,12 @@
     export default {
         name: 'page-todo-settings',
 
+        beforeRouteEnter(to, from, next) {
+            window.scrollTo(0, 0);
+
+            next();
+        },
+
         created() {
             this.load();
         },

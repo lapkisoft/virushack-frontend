@@ -44,6 +44,12 @@
     import './assets/scss/_Support.scss';
 
     export default {
-        name: 'page-support'
+        name: 'page-support',
+
+        beforeRouteEnter(to, from, next) {
+            window.scrollTo(0, 0);
+
+            next();
+        }
     };
 </script>

@@ -47,6 +47,12 @@
     export default {
         name: 'page-indication-list',
 
+        beforeRouteEnter(to, from, next) {
+            window.scrollTo(0, 0);
+
+            next();
+        },
+
         components: {
             DateSelector
         },

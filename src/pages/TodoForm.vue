@@ -69,6 +69,12 @@
     export default {
         name: 'page-todo-form',
 
+        beforeRouteEnter(to, from, next) {
+            window.scrollTo(0, 0);
+
+            next();
+        },
+
         data() {
             return {
                 type: '',

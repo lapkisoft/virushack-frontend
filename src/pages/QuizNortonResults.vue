@@ -75,6 +75,12 @@
     export default {
         name: 'page-quiz-norton-results',
 
+        beforeRouteEnter(to, from, next) {
+            window.scrollTo(0, 0);
+
+            next();
+        },
+
         data() {
             let result = parseInt(`${this.$route.params.result}`);
 
