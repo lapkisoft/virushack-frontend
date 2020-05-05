@@ -35,7 +35,7 @@
                        required>
             </div>
 
-            <h3>Больной лежачий?</h3>
+            <h3>Ваш подопечный - лежачий?</h3>
 
             <div class="row">
                 <div class="col">

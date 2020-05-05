@@ -26,7 +26,7 @@
                     </li>
                     <li>
                         <router-link @click.native="toggleMenu(false)" to="/quiz">
-                            Опрос состояния больного
+                            Опрос состояния подопечного
                         </router-link>
                     </li>
                     <li>
