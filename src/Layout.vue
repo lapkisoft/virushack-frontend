@@ -46,7 +46,7 @@
                     </li>
                     <li>
                         <router-link @click.native="toggleMenu(false)" to="/settings">
-                            Анкета
+                            Анкета подопечного
                         </router-link>
                     </li>
                     <li class="support">

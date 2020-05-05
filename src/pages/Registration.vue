@@ -85,17 +85,37 @@
         },
 
         data() {
+            let name = '',
+                age = '',
+                diagnosis = '',
+                symptoms = '',
+                bed_patient = null;
+
+            if (this.$route.name !== 'page-registration') {
+                name = localStorage.getItem('registration_name') || '';
+                age = localStorage.getItem('registration_age') || '';
+                diagnosis = localStorage.getItem('registration_diagnosis') || '';
+                symptoms = localStorage.getItem('registration_symptoms') || '';
+                bed_patient = localStorage.getItem('registration_bed_patient') === '1';
+            }
+
             return {
-                name: '',
-                age: '',
-                diagnosis: '',
-                symptoms: '',
-                bed_patient: null
+                name,
+                age,
+                diagnosis,
+                symptoms,
+                bed_patient
             };
         },
 
         methods: {
             submit() {
+                localStorage.setItem('registration_name', this.name);
+                localStorage.setItem('registration_age', this.age);
+                localStorage.setItem('registration_diagnosis', this.diagnosis);
+                localStorage.setItem('registration_symptoms', this.symptoms);
+                localStorage.setItem('registration_bed_patient', this.bed_patient ? '1' : '');
+
                 this.$router.push({name: 'page-dashboard'});
             }
         }
