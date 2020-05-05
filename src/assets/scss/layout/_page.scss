@@ -104,7 +104,7 @@ header {
             display: block;
             height: 100%;
             margin: 0 0 0 50px;
-            padding: 100px 20px 20px;
+            padding: 85px 20px 20px;
             list-style: none;
             background: #e4f0fa;
             box-shadow: 25px 28px 66px rgba(176, 195, 210, 0.727846);
@@ -115,7 +115,7 @@ header {
             pointer-events: none;
 
             > li {
-                margin: 0 0 15px;
+                margin: 0 0 22px;
 
                 a {
                     display: inline-block;
@@ -130,6 +130,15 @@ header {
                     &.router-link-active {
                         color: #000000;
                         text-decoration: underline;
+                    }
+                }
+
+                &.support {
+                    a {
+                        font-weight: 600;
+                        font-size: 18px;
+                        line-height: 22px;
+                        color: #feaaa0;
                     }
                 }
             }

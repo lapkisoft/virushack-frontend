@@ -49,6 +49,11 @@
                             Настройка
                         </router-link>
                     </li>
+                    <li class="support">
+                        <router-link @click.native="toggleMenu(false)" to="/support">
+                            Поддержка
+                        </router-link>
+                    </li>
                 </menu>
             </div>
         </header>
@@ -69,6 +74,7 @@
         'page-quiz': 'page-dashboard',
         'page-quiz-norton': 'page-dashboard',
         'page-settings': 'page-dashboard',
+        'page-support': 'page-dashboard',
         'page-disease-dynamics': 'page-dashboard',
         'page-recommendations': 'page-dashboard',
         'page-indication-add': 'page-dashboard',

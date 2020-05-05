@@ -1,18 +1,16 @@
 .page-main {
-    padding: 40px 0 0;
+    padding: 0;
 
     img.logo {
         display: block;
-        width: 80px;
-        height: 80px;
-        margin: 0 auto 30px;
-        object-position: center center;
-        object-fit: scale-down;
+        width: 103px;
+        height: 127px;
+        margin: 0 auto 20px;
     }
 
     h2 {
-        margin: 0 0 10px;
-        font-size: 20px;
+        margin: 0 0 5px;
+        font-size: 24px;
         font-weight: 700;
         line-height: 24px;
         text-align: center;
@@ -28,22 +26,23 @@
     }
 
     .controls {
-        max-width: 275px;
+        max-width: 300px;
         margin: 0 auto;
 
         .button {
             &.button-registration {
-                position: relative;
-                padding: 20px 60px;
+                display: flex;
+                flex-direction: row;
+                flex-wrap: nowrap;
+                justify-content: center;
+                align-items: center;
 
                 &:before {
                     content: '';
                     display: block;
-                    position: absolute;
-                    top: 20px;
-                    left: 30px;
                     width: 22px;
                     height: 22px;
+                    margin: 0 10px 0 0;
                     background-image: url(/img/registration.svg);
                     background-repeat: no-repeat;
                     background-position: center center;

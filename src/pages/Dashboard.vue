@@ -71,22 +71,21 @@
 
         data() {
             return {
-                date: this.$route.params.date || new Date().toISOString().split('T')[0],
                 checklist: null
             };
         },
 
         computed: {
             completedTaskCount() {
-                return this.checklist.items.filter(({completed}) => completed).length;
+                return this.checklist && this.checklist.items.filter(({completed}) => completed).length;
             },
 
             allTasksCompleted() {
-                return this.checklist.items.length === this.completedTaskCount;
+                return this.checklist && this.checklist.items.length === this.completedTaskCount;
             },
 
             sleepTaskCompleted() {
-                return this.checklist.items.filter(({type, completed}) => completed && type === checklistItemTypes.SLEEP).length > 0;
+                return this.checklist && this.checklist.items.filter(({type, completed}) => completed && type === checklistItemTypes.SLEEP).length > 0;
             },
 
             tasksPlankClassList() {
@@ -100,15 +99,11 @@
             },
 
             personalArticles() {
-                if (this.sleepTaskCompleted === false) {
-                    return [];
-                }
-
                 return [
-                    {
+                    this.sleepTaskCompleted ? {
                         img: '/img/recommendations/01.png',
                         link: 'https://pro-palliativ.ru/library/video-profilaktika-prolezhnej/'
-                    },
+                    } : null,
                     {
                         img: '/img/recommendations/02.png',
                         link: 'https://pro-palliativ.ru/blog/saharnyj-diabet-v-klinicheskoj-praktike-u-palliativnyh-bolnyh/'
@@ -117,7 +112,7 @@
                         img: '/img/recommendations/03.png',
                         link: 'https://pro-palliativ.ru/blog/klyuchevye-printsipy-i-tehnologii-nutritivnoj-podderzhki-v-palliativnoj-meditsine/'
                     }
-                ];
+                ].filter((i) => !!i);
             },
 
             baseArticles() {
@@ -144,7 +139,7 @@
             ]),
 
             load() {
-                this.getChecklist(this.date).then((checklist) => {
+                this.getChecklist().then((checklist) => {
                     this.checklist = checklist;
                 });
             }

@@ -1,0 +1,67 @@
+.page-support {
+    h3 {
+        margin: 0 0 12px;
+        font-weight: 600;
+        font-size: 18px;
+        line-height: 22px;
+        color: #334669;
+    }
+
+    .panel {
+        margin: 0 0 8px;
+        padding: 18px;
+        background: white;
+        border-radius: 12px;
+
+        .panel-header {
+            padding: 0 0 10px;
+            font-size: 13px;
+            line-height: 15px;
+            color: #334669;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .panel-body {
+            padding: 10px 0 0;
+
+            p {
+                display: block;
+                position: relative;
+                margin: 0 0 10px;
+                padding: 2px 0 2px 25px;
+                font-size: 13px;
+                line-height: 15px;
+                color: #334669;
+
+                &:before {
+                    content: '';
+                    display: block;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 18px;
+                    height: 18px;
+                    background-repeat: no-repeat;
+                    background-position: center center;
+                    background-size: contain;
+                }
+
+                &.phone:before {
+                    background-image: url(/img/inline-icons/phone.svg);
+                }
+
+                &.email:before {
+                    background-image: url(/img/inline-icons/email.svg);
+                }
+
+                &.globe:before {
+                    background-image: url(/img/inline-icons/globe.svg);
+                }
+            }
+        }
+
+        + h3 {
+            margin-top: 35px;
+        }
+    }
+}

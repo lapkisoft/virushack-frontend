@@ -1,12 +1,12 @@
 <template>
     <div class="page page-main">
-        <img src="/img/doc.svg" alt="" class="logo">
+        <img src="/img/logo-main.png" alt="" class="logo">
 
         <h2>Добро пожаловать</h2>
         <h3>Добавьте вашего подопечного.<br>Это займет всего минуту.</h3>
 
         <div class="controls">
-            <router-link to="/registration" class="button button-registration">Новый пациент</router-link>
+            <router-link to="/registration" class="button button-registration">Добавить подопечного</router-link>
         </div>
     </div>
 </template>

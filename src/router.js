@@ -14,8 +14,9 @@ import TodoSettings from './pages/TodoSettings.vue';
 import Registration from './pages/Registration.vue';
 import Dashboard from './pages/Dashboard';
 import DiseaseDynamics from './pages/DiseaseDynamics.vue';
-import QuizNorton from '@/pages/QuizNorton';
-import QuizNortonResults from '@/pages/QuizNortonResults';
+import QuizNorton from './pages/QuizNorton.vue';
+import QuizNortonResults from './pages/QuizNortonResults.vue';
+import Support from './pages/Support.vue';
 
 Vue.use(VueRouter);
 
@@ -76,6 +77,11 @@ const router = new VueRouter({
             name: QuizNortonResults.name,
             path: '/quiz-norton-results/:result',
             component: QuizNortonResults
+        },
+        {
+            name: Support.name,
+            path: '/support',
+            component: Support
         },
         {
             name: Recommendations.name,
