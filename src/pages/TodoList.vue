@@ -62,14 +62,14 @@
 
         computed: {
             ...mapState([
-                'state'
+                'defaultItems'
             ])
         },
 
         methods: {
             ...mapActions([
                 'getChecklist',
-                'getIndicationList',
+                'getIndicationList'
             ]),
 
             load() {
@@ -166,6 +166,10 @@
             },
 
             checkboxItemAction(item) {
+                if (item.completed) {
+                    return;
+                }
+
                 switch (item.type) {
                     case checklistItemTypes.PULSE_PRESSURE:
                     case checklistItemTypes.TEMPERATURE:

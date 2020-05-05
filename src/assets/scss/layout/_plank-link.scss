@@ -1,0 +1,44 @@
+.plank-link {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 0 0 45px;
+    padding: 22px 18px;
+    background: white;
+    box-shadow: 19px 21px 50px rgba(176, 195, 210, 0.727846), -8px 0px 8px rgba(244, 248, 251, 0.50254), -8px -40px 22px rgba(246, 251, 255, 0.384288), -11px -11px 20px rgba(255, 255, 255, 0.272044);
+    border-radius: 20px;
+
+    .icon {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: center;
+        align-items: center;
+        flex-shrink: 0;
+        margin: 0 20px 0 0;
+        width: 56px;
+        height: 56px;
+        background: linear-gradient(295.74deg, rgba(205,138,154,0.1) -52.26%, rgba(254, 170, 160, 0.1) 118.91%);
+    }
+
+    .label {
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 20px;
+        color: #334669;
+
+        span {
+            display: inline-block;
+            margin: 5px 0 0;
+            font-size: 13px;
+            line-height: 16px;
+            font-weight: 400;
+        }
+    }
+
+    &.danger {
+        background: #fbebe8;
+    }
+}

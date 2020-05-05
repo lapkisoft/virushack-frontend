@@ -1,6 +1,6 @@
 <template>
     <div class="page page-dashboard" v-if="checklist">
-        <router-link to="/todo-list" class="tasks-plank" :class="tasksPlankClassList">
+        <router-link to="/todo-list" class="plank-link" :class="tasksPlankClassList">
             <div class="icon">
                 <img src="/img/icons/warning.svg" alt="">
             </div>
@@ -11,6 +11,24 @@
                 Выполнено {{ completedTaskCount }} / {{ checklist.items.length }}
             </div>
         </router-link>
+
+        <template v-if="sleepTaskCompleted">
+            <h3>Рекомендованные опросы</h3>
+
+            <router-link to="/quiz-norton" class="plank-link">
+                <div class="icon">
+                    <img src="/img/icons/light.svg" alt="">
+                </div>
+
+                <div class="label">
+                    Оценка Риска Пролежней (Norton)
+                    <br>
+                    <span>Очень важно</span>
+                </div>
+            </router-link>
+
+            <br>
+        </template>
 
         <template v-if="personalArticles.length > 0">
             <h3>Рекомендации для подопечного</h3>
@@ -73,7 +91,7 @@
 
             tasksPlankClassList() {
                 return {
-                    completed: this.allTasksCompleted
+                    danger: !this.allTasksCompleted
                 };
             },
 

@@ -30,7 +30,7 @@
                         </router-link>
                     </li>
                     <li>
-                        <router-link @click.native="toggleMenu(false)" to="/indication-list">
+                        <router-link @click.native="toggleMenu(false)" to="/indication-add">
                             Измерения
                         </router-link>
                     </li>
@@ -67,10 +67,11 @@
         'page-todo-list': 'page-dashboard',
         'page-indication-list': 'page-dashboard',
         'page-quiz': 'page-dashboard',
+        'page-quiz-norton': 'page-dashboard',
         'page-settings': 'page-dashboard',
         'page-disease-dynamics': 'page-dashboard',
         'page-recommendations': 'page-dashboard',
-        'page-indication-add': 'page-indication-list',
+        'page-indication-add': 'page-dashboard',
         'page-indication-form-for-type': 'page-indication-add',
         'page-indication-form-for-item': 'page-todo-list',
         'page-todo-settings': 'page-todo-list',

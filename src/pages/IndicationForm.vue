@@ -377,7 +377,7 @@
             afterSubmit() {
                 switch (this.$route.name) {
                     case nameForType:
-                        this.$router.push({name: 'page-indication-list'});
+                        this.$router.push({name: 'page-disease-dynamics', params: {type: this.type}});
                         break;
 
                     case nameForItem:
